@@ -2,46 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9920924-3ff8-45e2-a879-9edf20d147ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Cliente.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Comprobador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Comprobador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Pagador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Pagador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Planificador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Recomendador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Recomendador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Valorador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Valorador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/AgenteDevoluciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteDevoluciones.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/AgenteNegociador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteNegociador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/AgenteRecomendaciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteRecomendaciones.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/ExternalTransportDirectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/ExternalTransportDirectory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/SimpleDirectoryService.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/SimpleDirectoryService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/Transporte1.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/Transporte1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/Transporte2.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/Transporte2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/VendedorExterno.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/VendedorExterno.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/product.rdf" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/product.rdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/Datos/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Datos/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/CompraRealizada.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/CompraRealizada.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/DevolucionCompleta.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/DevolucionCompleta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/Initial_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/Initial_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/ProductoRegistrado.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/ProductoRegistrado.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/RegistrarProductos.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/RegistrarProductos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/ValoracionFinalizada.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/ValoracionFinalizada.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/Vendedor_main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/Vendedor_main_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/busqueda.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/busqueda.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/devolucion.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/devolucion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/templates/valorados.html" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/templates/valorados.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/utils/ACLMessages.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/utils/ACLMessages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/utils/Agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/utils/Agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/utils/ExternalTransportAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/utils/ExternalTransportAgent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/utils/FlaskServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/utils/FlaskServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/utils/Logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/utils/Logging.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/utils/OntoNamespaces.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/utils/OntoNamespaces.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/utils/OntologyNamespaces.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/utils/OntologyNamespaces.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/utils/SPARQLPoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/utils/SPARQLPoints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/SimpleDirectoryService.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/SimpleDirectoryService.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,27 +15,73 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteRecomendaciones.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3769" />
-          </provider>
+        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/templates/DevolucionCompleta.html">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3672" />
+            <state relative-caret-position="-816" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Valorador.py">
+        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/templates/RegistrarProductos.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Pagador.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-255" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/product.rdf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2856" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/VendedorExterno.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1887" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Recomendador.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3754" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/SimpleDirectoryService.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3193" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteDevoluciones.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="785">
+              <caret line="296" column="45" selection-start-line="296" selection-start-column="45" selection-end-line="296" selection-end-column="45" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -87,7 +96,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1260" />
@@ -111,6 +127,31 @@
               <item name="ECSDI-SKL" type="462c0819:PsiDirectoryNode" />
               <item name="PlanificadorViajes" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ECSDI-SKL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECSDI-SKL" type="462c0819:PsiDirectoryNode" />
+              <item name="PlanificadorViajes" type="462c0819:PsiDirectoryNode" />
+              <item name="Agentes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ECSDI-SKL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECSDI-SKL" type="462c0819:PsiDirectoryNode" />
+              <item name="PlanificadorViajes" type="462c0819:PsiDirectoryNode" />
+              <item name="Agentes" type="462c0819:PsiDirectoryNode" />
+              <item name="trash" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ECSDI-SKL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECSDI-SKL" type="462c0819:PsiDirectoryNode" />
+              <item name="PlanificadorViajes" type="462c0819:PsiDirectoryNode" />
+              <item name="Datos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ECSDI-SKL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECSDI-SKL" type="462c0819:PsiDirectoryNode" />
+              <item name="PlanificadorViajes" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -128,6 +169,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gonza\Documents\ECSDI\ECSDI-SKL\PlanificadorViajes\Agentes" />
       <recent name="C:\Users\gonza\Documents\ECSDI\ECSDI-SKL\PracticaTiendaDistributed\AgentesTienda\trash" />
     </key>
   </component>
@@ -153,19 +195,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559486070544</updated>
-      <workItem from="1559486071959" duration="936000" />
+      <workItem from="1559486071959" duration="3439000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="936000" />
+    <option name="totallyTimeSpent" value="3439000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="20" width="1260" height="944" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24271844" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -193,21 +235,85 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteRecomendaciones.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3769" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3672" />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Valorador.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteRecomendaciones.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3742" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Comprobador.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1393">
+          <caret line="100" column="48" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="48" />
+          <folding>
+            <element signature="e#371#386#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/templates/ProductoRegistrado.html">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/templates/busqueda.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/templates/CompraRealizada.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/templates/DevolucionCompleta.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-816" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/templates/RegistrarProductos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Pagador.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/product.rdf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2856" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/VendedorExterno.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1887" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Recomendador.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3754" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/SimpleDirectoryService.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3193" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteDevoluciones.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="785">
+          <caret line="296" column="45" selection-start-line="296" selection-start-column="45" selection-end-line="296" selection-end-column="45" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

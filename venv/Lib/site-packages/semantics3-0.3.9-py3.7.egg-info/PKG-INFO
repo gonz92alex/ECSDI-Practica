@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: semantics3
+Version: 0.3.9
+Summary: Semantics3 Products API
+Home-page: https://github.com/Semantics3/semantics3-python
+Author: Shawn Tan, Abishek Bhat
+Author-email: abishek@semantics3.com
+License: MIT
+Description: UNKNOWN
+Keywords: api ecommerce products
+Platform: UNKNOWN
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License

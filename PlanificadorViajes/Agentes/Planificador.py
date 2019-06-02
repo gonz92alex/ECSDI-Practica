@@ -174,7 +174,7 @@ def comunicacion():
                 return serialize, 200
 
 
-def findProducts(modelo=None, brand=None, min_price=0.0, max_price=sys.float_info.max):
+def findFlights(origin=None, destination=None):
     graph = Graph()
     ontologyFile = open('../Datos/productos')
     graph.parse(ontologyFile, format='turtle')
@@ -276,4 +276,22 @@ if __name__ == '__main__':
     ab1.join()
     print('The End')
 
-
+def buscar(origen, destino):
+    amadeus = Client(
+        client_id='s2h4iHhivYGEkIyyVuzNAUxL7SHxVpSl',
+        client_secret='sUSz5eLygipHqv1C'
+    )
+    date = dateToApi(request.args.get('date', None))
+    print(origen)
+    print(destino)
+    print(date)
+    #return 'Quieres ir de '+origen+' a '+destino
+    try:
+        res = amadeus.shopping.flight_dates.get(
+            origin=origen,
+            destination=destino
+        )
+        return jsonify(res.result)
+    except ResponseError as error:
+        print('en error')
+        return jsonify(error.response.result)
