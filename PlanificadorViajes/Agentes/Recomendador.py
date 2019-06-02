@@ -26,11 +26,11 @@ import socket
 from rdflib import Namespace, Graph, logger, RDF, XSD, Literal
 from flask import Flask, request
 
-from PlanificadorViajes.utils.ACLMessages import get_message_properties, build_message, register_agent
-from PlanificadorViajes.utils.FlaskServer import shutdown_server
-from PlanificadorViajes.utils.Agent import Agent
-from PlanificadorViajes.utils.OntoNamespaces import ACL
-from PlanificadorViajes.utils.OntologyNamespaces import ECSDI
+from PlanificadorViajes.ecsdi_modules.ACLMessages import get_message_properties, build_message, register_agent
+from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
+from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
 
 __author__ = 'Amazon V2'
 
@@ -142,7 +142,7 @@ def comunicacion():
             content = msgdic['content']
             accion = gm.value(subject=content, predicate=RDF.type)
 
-            if accion == ECSDI.Peticion_Valorados:
+            if accion == Ontologia.Peticion_Valorados:
                 get_all_sells()
                 if compras.__len__() == 0:
                     g = Graph()
@@ -152,10 +152,10 @@ def comunicacion():
                 logger.info('Respondemos a la peticion')
                 serialize = gr.serialize(format='xml')
                 return serialize, 200
-            elif accion == ECSDI.Peticion_valorar:
+            elif accion == Ontologia.Peticion_valorar:
                 for item in gm.subjects(RDF.type, ACL.FipaAclMessage):
                     gm.remove((item, None, None))
-                for item in gm.subjects(RDF.type, ECSDI.Peticion_valorar):
+                for item in gm.subjects(RDF.type, Ontologia.Peticion_valorar):
                     gm.remove((item, None, None))
                 guardarValoraciones(gm)
                 serialize = gm.serialize(format='xml')
@@ -202,7 +202,7 @@ def findValProducts():
 
     graph_query = graph.query(query)
     result = Graph()
-    result.bind('ECSDI', ECSDI)
+    result.bind('ECSDI', Ontologia)
     product_count = 0
     for row in graph_query:
         nombre = row.nombre
@@ -213,12 +213,12 @@ def findValProducts():
         logger.debug(nombre, marca, modelo, precio)
         subject = row.producto
         product_count += 1
-        result.add((subject, RDF.type, ECSDI.Producte))
-        result.add((subject, ECSDI.Marca, Literal(marca, datatype=XSD.string)))
-        result.add((subject, ECSDI.Modelo, Literal(modelo, datatype=XSD.string)))
-        result.add((subject, ECSDI.Precio, Literal(precio, datatype=XSD.float)))
-        result.add((subject, ECSDI.Peso, Literal(peso, datatype=XSD.float)))
-        result.add((subject, ECSDI.Nombre, Literal(nombre, datatype=XSD.string)))
+        result.add((subject, RDF.type, Ontologia.Producte))
+        result.add((subject, Ontologia.Marca, Literal(marca, datatype=XSD.string)))
+        result.add((subject, Ontologia.Modelo, Literal(modelo, datatype=XSD.string)))
+        result.add((subject, Ontologia.Precio, Literal(precio, datatype=XSD.float)))
+        result.add((subject, Ontologia.Peso, Literal(peso, datatype=XSD.float)))
+        result.add((subject, Ontologia.Nombre, Literal(nombre, datatype=XSD.string)))
     return result
 
 
@@ -229,11 +229,11 @@ def get_all_sells():
     graph_compres = Graph()
     graph_compres.parse(open('../Datos/Compras'), format='turtle')
 
-    for compraUrl in graph_compres.subjects(RDF.type, ECSDI.Compra):
+    for compraUrl in graph_compres.subjects(RDF.type, Ontologia.Compra):
         single_sell = [compraUrl]
         products = []
-        for productUrl in graph_compres.objects(subject=compraUrl, predicate=ECSDI.Productos):
-            products.append(graph_compres.value(subject=productUrl, predicate=ECSDI.Nombre))
+        for productUrl in graph_compres.objects(subject=compraUrl, predicate=Ontologia.Productos):
+            products.append(graph_compres.value(subject=productUrl, predicate=Ontologia.Nombre))
         single_sell.append(products)
         compras.append(single_sell)
 

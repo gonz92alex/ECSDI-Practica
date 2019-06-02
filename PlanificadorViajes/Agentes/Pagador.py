@@ -23,11 +23,11 @@ import socket
 from rdflib import Namespace, Graph, logger, RDF
 from flask import Flask, request
 
-from PlanificadorViajes.utils.ACLMessages import register_agent, get_message_properties, build_message
-from PlanificadorViajes.utils.FlaskServer import shutdown_server
-from PlanificadorViajes.utils.Agent import Agent
-from PlanificadorViajes.utils.OntoNamespaces import ACL
-from PlanificadorViajes.utils.OntologyNamespaces import ECSDI
+from PlanificadorViajes.ecsdi_modules.ACLMessages import register_agent, get_message_properties, build_message
+from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
+from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
 
 __author__ = 'Amazon V2'
 
@@ -142,7 +142,7 @@ def comunicacion():
 
             # Aqui realizariamos lo que pide la accion
 
-            if accion == ECSDI.Registrar_productos:
+            if accion == Ontologia.Registrar_productos:
                 gr = recordExternalProduct(gm)
 
     logger.info('Respondemos a la peticion')
@@ -171,7 +171,7 @@ def recordExternalProduct(gm):
     g.parse(ontologyFile, format='turtle')
 
     # Aquí afegim el producte al graf
-    producto = gm.subjects(RDF.type, ECSDI.Producto_externo)
+    producto = gm.subjects(RDF.type, Ontologia.Producto_externo)
     producto = producto.next()
 
     for s, p, o in gm:

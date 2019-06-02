@@ -23,12 +23,12 @@ import socket
 from rdflib import Namespace, Graph, logger, RDF, URIRef
 from flask import Flask, request
 
-from PlanificadorViajes.utils.ACLMessages import register_agent, get_message_properties, build_message, get_agent_info, \
+from PlanificadorViajes.ecsdi_modules.ACLMessages import register_agent, get_message_properties, build_message, get_agent_info, \
     send_message
-from PlanificadorViajes.utils.FlaskServer import shutdown_server
-from PlanificadorViajes.utils.Agent import Agent
-from PlanificadorViajes.utils.OntoNamespaces import ACL
-from PlanificadorViajes.utils.OntologyNamespaces import ECSDI
+from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
+from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
 
 __author__ = 'Amazon V2'
 
@@ -130,10 +130,10 @@ def comunicacion():
             content = msgdic['content']
             accion = gm.value(subject=content, predicate=RDF.type)
             logger.info('Recibida una petición en AgenteComprador')
-            if accion == ECSDI.Peticion_compra:
+            if accion == Ontologia.Peticion_compra:
                 logger.info('Recibida peticion compra')
                 compra = None
-                for item in gm.subjects(RDF.type, ECSDI.Compra):
+                for item in gm.subjects(RDF.type, Ontologia.Compra):
                     compra = item
 
                 gm.remove((content, None, None))
@@ -183,10 +183,10 @@ def registerSells(gm):
 def sendSell(gm, sell):
 
     logger.info('Nos comunicamos con el Centro Logistico')
-    content = ECSDI['Enviar_venta_' + str(get_n_message())]
+    content = Ontologia['Enviar_venta_' + str(get_n_message())]
 
-    gm.add((content, RDF.type, ECSDI.Enviar_venta))
-    gm.add((content, ECSDI.identificador_Compra, URIRef(sell)))
+    gm.add((content, RDF.type, Ontologia.Enviar_venta))
+    gm.add((content, Ontologia.identificador_Compra, URIRef(sell)))
 
     centro_logistico = get_agent_info(agn.AgenteCentroLogistico, DirectoryAgent, AgenteComprador, get_n_message())
 

@@ -23,12 +23,12 @@ import socket
 from rdflib import Namespace, Graph, logger, RDF, URIRef
 from flask import Flask, request
 
-from PlanificadorViajes.utils.ACLMessages import build_message, get_message_properties, get_agent_info, send_message, \
+from PlanificadorViajes.ecsdi_modules.ACLMessages import build_message, get_message_properties, get_agent_info, send_message, \
     register_agent
-from PlanificadorViajes.utils.FlaskServer import shutdown_server
-from PlanificadorViajes.utils.Agent import Agent
-from PlanificadorViajes.utils.OntoNamespaces import ACL
-from PlanificadorViajes.utils.OntologyNamespaces import ECSDI
+from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
+from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
 
 __author__ = 'Amazon V2'
 
@@ -133,14 +133,14 @@ def comunicacion():
             content = msgdic['content']
             accion = gm.value(subject=content, predicate=RDF.type)
             # peticion de devolucion
-            if accion == ECSDI.Peticion_retorno:
+            if accion == Ontologia.Peticion_retorno:
                 logger.info("Recibida una peticion de retorno en AgenteDevoluciones")
 
                 for item in gm.subjects(RDF.type, ACL.FipaAclMessage):
                     gm.remove((item, None, None))
 
                 venta = []
-                for item in gm.objects(subject=content, predicate=ECSDI.CompraRetornada):
+                for item in gm.objects(subject=content, predicate=Ontologia.CompraRetornada):
                     venta.append(item)
 
                 payDelivery()
@@ -179,11 +179,11 @@ def payDelivery():
 
 
 def returnSell(gm, sell):
-    content = ECSDI['Recoger_devolucion_' + str(get_count())]
+    content = Ontologia['Recoger_devolucion_' + str(get_count())]
 
-    gm.add((content, RDF.type, ECSDI.Recoger_devolucion))
+    gm.add((content, RDF.type, Ontologia.Recoger_devolucion))
     for item in sell:
-        gm.add((content, ECSDI.compra_a_devolver, URIRef(item)))
+        gm.add((content, Ontologia.compra_a_devolver, URIRef(item)))
 
     logistic = get_agent_info(agn.AgenteCentroLogistico, DirectoryAgent, AgenteDevoluciones, get_count())
 

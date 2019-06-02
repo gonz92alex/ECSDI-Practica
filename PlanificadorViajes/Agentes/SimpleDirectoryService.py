@@ -26,11 +26,11 @@ from flask import Flask, request, render_template
 from rdflib import Graph, RDF, Namespace, RDFS
 from rdflib.namespace import FOAF, RDFS
 
-from PlanificadorViajes.utils.OntoNamespaces import ACL, DSO
-from PlanificadorViajes.utils.FlaskServer import shutdown_server
-from PlanificadorViajes.utils.Agent import Agent
-from PlanificadorViajes.utils.ACLMessages import build_message, get_message_properties
-from PlanificadorViajes.utils.Logging import config_logger
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL, DSO
+from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
+from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.ecsdi_modules.ACLMessages import build_message, get_message_properties
+from PlanificadorViajes.ecsdi_modules.Logging import config_logger
 
 __author__ = 'javier'
 

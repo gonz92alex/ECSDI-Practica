@@ -14,11 +14,11 @@ from multiprocessing import Process
 from flask import Flask, render_template, request
 from rdflib import Graph, Namespace, RDF, URIRef, Literal, XSD
 
-from PlanificadorViajes.utils.ACLMessages import Agent,get_agent_info, get_message_properties, build_message, send_message
-from PlanificadorViajes.utils.FlaskServer import shutdown_server
-from PlanificadorViajes.utils.Logging import config_logger
-from PlanificadorViajes.utils.OntoNamespaces import ACL
-from PlanificadorViajes.utils.OntologyNamespaces import ECSDI
+from PlanificadorViajes.ecsdi_modules.ACLMessages import Agent,get_agent_info, get_message_properties, build_message, send_message
+from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
+from PlanificadorViajes.ecsdi_modules.Logging import config_logger
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
 
 __author__ = 'amazadonde'
 
@@ -115,9 +115,9 @@ def browser_valorar():
     global product_list3, product_list4
     if request.method == 'GET':
         product_list3 = []
-        contentResult = ECSDI['Peticion_Valoracion' + str(get_count())]
+        contentResult = Ontologia['Peticion_Valoracion' + str(get_count())]
         gr = Graph();
-        gr.add((contentResult, RDF.type, ECSDI.Peticion_Valorados))
+        gr.add((contentResult, RDF.type, Ontologia.Peticion_Valorados))
         Valorador = get_agent_info(agn.AgenteValorador, DirectoryAgent, UserClient, get_count())
 
         gr4 = send_message(
@@ -135,15 +135,15 @@ def browser_valorar():
                 subject_dict = product_list3[subject_pos[s]]
                 if p == RDF.type:
                     subject_dict['url'] = s
-                elif p == ECSDI.Marca:
+                elif p == Ontologia.Marca:
                     subject_dict['marca'] = o
-                elif p == ECSDI.Modelo:
+                elif p == Ontologia.Modelo:
                     subject_dict['modelo'] = o
-                elif p == ECSDI.Precio:
+                elif p == Ontologia.Precio:
                     subject_dict['precio'] = o
-                elif p == ECSDI.Nombre:
+                elif p == Ontologia.Nombre:
                     subject_dict['nombre'] = o
-                elif p == ECSDI.Peso:
+                elif p == Ontologia.Peso:
                     subject_dict['peso'] = o
                 product_list3[subject_pos[s]] = subject_dict
 
@@ -168,25 +168,25 @@ def browser_valorar():
             if products_checked.__len__() > 0:
 
                 # Content of the message
-                content = ECSDI['Peticion_Valorar_' + str(get_count())]
+                content = Ontologia['Peticion_Valorar_' + str(get_count())]
 
                 # Graph creation
                 gr = Graph()
-                gr.add((content, RDF.type, ECSDI.Peticion_valorar))
+                gr.add((content, RDF.type, Ontologia.Peticion_valorar))
 
 
                 for item in products_checked:
                     # Creacion del producto --------------------------------------------------------------------------------
                     subject_producto = item[4]
-                    gr.add((subject_producto, RDF.type, ECSDI.Producto))
-                    gr.add((subject_producto, ECSDI.Marca, Literal(item[0], datatype=XSD.string)))
-                    gr.add((subject_producto, ECSDI.Modelo, Literal(item[1], datatype=XSD.string)))
-                    gr.add((subject_producto, ECSDI.Nombre, Literal(item[2], datatype=XSD.string)))
-                    gr.add((subject_producto, ECSDI.Precio, Literal(item[3], datatype=XSD.float)))
-                    gr.add((subject_producto, ECSDI.Peso, Literal(item[5], datatype=XSD.float)))
-                    gr.add((subject_producto,ECSDI.Valoracion,Literal(item[6], datatype=XSD.number)))
+                    gr.add((subject_producto, RDF.type, Ontologia.Producto))
+                    gr.add((subject_producto, Ontologia.Marca, Literal(item[0], datatype=XSD.string)))
+                    gr.add((subject_producto, Ontologia.Modelo, Literal(item[1], datatype=XSD.string)))
+                    gr.add((subject_producto, Ontologia.Nombre, Literal(item[2], datatype=XSD.string)))
+                    gr.add((subject_producto, Ontologia.Precio, Literal(item[3], datatype=XSD.float)))
+                    gr.add((subject_producto, Ontologia.Peso, Literal(item[5], datatype=XSD.float)))
+                    gr.add((subject_producto, Ontologia.Valoracion, Literal(item[6], datatype=XSD.number)))
 
-                gr.add((content, ECSDI.Productos, URIRef(subject_producto)))
+                gr.add((content, Ontologia.Productos, URIRef(subject_producto)))
 
                 Valorador = get_agent_info(agn.AgenteValorador, DirectoryAgent, UserClient, get_count())
 
@@ -207,17 +207,17 @@ def browser_valorar():
                         subject_dict = product_list4[subject_pos[s]]
                         if p == RDF.type:
                             subject_dict['url'] = s
-                        elif p == ECSDI.Marca:
+                        elif p == Ontologia.Marca:
                             subject_dict['marca'] = o
-                        elif p == ECSDI.Modelo:
+                        elif p == Ontologia.Modelo:
                             subject_dict['modelo'] = o
-                        elif p == ECSDI.Precio:
+                        elif p == Ontologia.Precio:
                             subject_dict['precio'] = o
-                        elif p == ECSDI.Nombre:
+                        elif p == Ontologia.Nombre:
                             subject_dict['nombre'] = o
-                        elif p == ECSDI.Peso:
+                        elif p == Ontologia.Peso:
                             subject_dict['peso'] = o
-                        elif p == ECSDI.Valoracion:
+                        elif p == Ontologia.Valoracion:
                             subject_dict['puntuacion'] = o
                         product_list4[subject_pos[s]] = subject_dict
 
@@ -237,9 +237,9 @@ def browser_cerca():
     global product_list2
     if request.method == 'GET':
 
-        contentResult = ECSDI['Peticion_Recomendacion' + str(get_count())]
+        contentResult = Ontologia['Peticion_Recomendacion' + str(get_count())]
         gr = Graph();
-        gr.add((contentResult, RDF.type, ECSDI.Peticion_Recomendados))
+        gr.add((contentResult, RDF.type, Ontologia.Peticion_Recomendados))
         Recomendador = get_agent_info(agn.AgenteRecomendador, DirectoryAgent, UserClient, get_count())
 
         gr3 = send_message(
@@ -259,15 +259,15 @@ def browser_cerca():
                 subject_dict = product_list2[subject_pos[s]]
                 if p == RDF.type:
                     subject_dict['url'] = s
-                elif p == ECSDI.Marca:
+                elif p == Ontologia.Marca:
                     subject_dict['marca'] = o
-                elif p == ECSDI.Modelo:
+                elif p == Ontologia.Modelo:
                     subject_dict['modelo'] = o
-                elif p == ECSDI.Precio:
+                elif p == Ontologia.Precio:
                     subject_dict['precio'] = o
-                elif p == ECSDI.Nombre:
+                elif p == Ontologia.Nombre:
                     subject_dict['nombre'] = o
-                elif p == ECSDI.Peso:
+                elif p == Ontologia.Peso:
                     subject_dict['peso'] = o
                 product_list2[subject_pos[s]] = subject_dict
 
@@ -280,38 +280,38 @@ def browser_cerca():
             logger.info("Enviando peticion de busqueda")
 
             # Content of the message
-            contentResult = ECSDI['Peticion_Busqueda' + str(get_count())]
+            contentResult = Ontologia['Peticion_Busqueda' + str(get_count())]
 
             # Graph creation
             gr = Graph()
-            gr.add((contentResult, RDF.type, ECSDI.Peticion_Busqueda))
+            gr.add((contentResult, RDF.type, Ontologia.Peticion_Busqueda))
 
             # Add restriccio nom
             nombre = request.form['nombre']
             if nombre:
                 # Subject nom
-                subject_nom = ECSDI['RestriccionNombre' + str(get_count())]
-                gr.add((subject_nom, RDF.type, ECSDI.Restriccion_Nombre))
-                gr.add((subject_nom, ECSDI.name, Literal(nombre, datatype=XSD.string)))
+                subject_nom = Ontologia['RestriccionNombre' + str(get_count())]
+                gr.add((subject_nom, RDF.type, Ontologia.Restriccion_Nombre))
+                gr.add((subject_nom, Ontologia.name, Literal(nombre, datatype=XSD.string)))
                 # Add restriccio to content
-                gr.add((contentResult, ECSDI.Restricciones, URIRef(subject_nom)))
+                gr.add((contentResult, Ontologia.Restricciones, URIRef(subject_nom)))
             marca = request.form['marca']
             if marca:
-                Sujeto_marca = ECSDI['Restriccion_Marca_' + str(get_count())]
-                gr.add((Sujeto_marca, RDF.type, ECSDI.Restriccion_Marca))
-                gr.add((Sujeto_marca, ECSDI.Marca, Literal(marca, datatype=XSD.string)))
-                gr.add((contentResult, ECSDI.Restricciones, URIRef(Sujeto_marca)))
+                Sujeto_marca = Ontologia['Restriccion_Marca_' + str(get_count())]
+                gr.add((Sujeto_marca, RDF.type, Ontologia.Restriccion_Marca))
+                gr.add((Sujeto_marca, Ontologia.Marca, Literal(marca, datatype=XSD.string)))
+                gr.add((contentResult, Ontologia.Restricciones, URIRef(Sujeto_marca)))
             min_price = request.form['min_price']
             max_price = request.form['max_price']
 
             if min_price or max_price:
-                Sujeto_precios = ECSDI['Restriccion_Precios_' + str(get_count())]
-                gr.add((Sujeto_precios, RDF.type, ECSDI.Rango_precio))
+                Sujeto_precios = Ontologia['Restriccion_Precios_' + str(get_count())]
+                gr.add((Sujeto_precios, RDF.type, Ontologia.Rango_precio))
                 if min_price:
-                    gr.add((Sujeto_precios, ECSDI.Precio_min, Literal(min_price)))
+                    gr.add((Sujeto_precios, Ontologia.Precio_min, Literal(min_price)))
                 if max_price:
-                    gr.add((Sujeto_precios, ECSDI.Precio_max, Literal(max_price)))
-                gr.add((contentResult, ECSDI.Restricciones, URIRef(Sujeto_precios)))
+                    gr.add((Sujeto_precios, Ontologia.Precio_max, Literal(max_price)))
+                gr.add((contentResult, Ontologia.Restricciones, URIRef(Sujeto_precios)))
 
             Buscador = get_agent_info(agn.AgenteBuscador, DirectoryAgent, UserClient, get_count())
 
@@ -332,15 +332,15 @@ def browser_cerca():
                     subject_dict = product_list[subject_pos[s]]
                     if p == RDF.type:
                         subject_dict['url'] = s
-                    elif p == ECSDI.Marca:
+                    elif p == Ontologia.Marca:
                         subject_dict['marca'] = o
-                    elif p == ECSDI.Modelo:
+                    elif p == Ontologia.Modelo:
                         subject_dict['modelo'] = o
-                    elif p == ECSDI.Precio:
+                    elif p == Ontologia.Precio:
                         subject_dict['precio'] = o
-                    elif p == ECSDI.Nombre:
+                    elif p == Ontologia.Nombre:
                         subject_dict['nombre'] = o
-                    elif p == ECSDI.Peso:
+                    elif p == Ontologia.Peso:
                         subject_dict['peso'] = o
                     product_list[subject_pos[s]] = subject_dict
 
@@ -381,28 +381,28 @@ def browser_cerca():
             logger.info("Creando la peticion de compra")
 
             # Content of the message
-            content = ECSDI['Peticion_compra_' + str(get_count())]
+            content = Ontologia['Peticion_compra_' + str(get_count())]
 
             # Graph creation
             gr = Graph()
-            gr.add((content, RDF.type, ECSDI.Peticion_compra))
+            gr.add((content, RDF.type, Ontologia.Peticion_compra))
 
             # Asignar prioridad a la peticion (asignamos el contador de mensaje)
-            gr.add((content, ECSDI.Prioridad, Literal(get_count(), datatype=XSD.integer)))
+            gr.add((content, Ontologia.Prioridad, Literal(get_count(), datatype=XSD.integer)))
 
             # Creacion de la ciudad (por ahora Barcelona) --------------------------------------------------------------
-            subject_ciudad = ECSDI['Ciudad_' + str(random.randint(1, sys.float_info.max))]
+            subject_ciudad = Ontologia['Ciudad_' + str(random.randint(1, sys.float_info.max))]
 
-            gr.add((subject_ciudad, RDF.type, ECSDI.Ciudad))
-            gr.add((subject_ciudad, ECSDI.Nombre, Literal('Barcelona', datatype=XSD.string)))
-            gr.add((subject_ciudad, ECSDI.Longitud, Literal(41.398373, datatype=XSD.float)))
-            gr.add((subject_ciudad, ECSDI.Latitud, Literal(2.188247, datatype=XSD.float)))
+            gr.add((subject_ciudad, RDF.type, Ontologia.Ciudad))
+            gr.add((subject_ciudad, Ontologia.Nombre, Literal('Barcelona', datatype=XSD.string)))
+            gr.add((subject_ciudad, Ontologia.Longitud, Literal(41.398373, datatype=XSD.float)))
+            gr.add((subject_ciudad, Ontologia.Latitud, Literal(2.188247, datatype=XSD.float)))
 
             # Creacion del sobre (Compra) ------------------------------------------------------------------------------
-            subject_sobre = ECSDI['Compra_' + str(random.randint(1, sys.float_info.max))]
-            gr.add((subject_sobre, RDF.type, ECSDI.Compra))
-            gr.add((subject_sobre, ECSDI.Pagado, Literal(0, datatype=XSD.integer)))
-            gr.add((subject_sobre, ECSDI.Enviar_a, URIRef(subject_ciudad)))
+            subject_sobre = Ontologia['Compra_' + str(random.randint(1, sys.float_info.max))]
+            gr.add((subject_sobre, RDF.type, Ontologia.Compra))
+            gr.add((subject_sobre, Ontologia.Pagado, Literal(0, datatype=XSD.integer)))
+            gr.add((subject_sobre, Ontologia.Enviar_a, URIRef(subject_ciudad)))
 
             total_price = 0.0
 
@@ -410,17 +410,17 @@ def browser_cerca():
                 total_price += float(item[3])
                 # Creacion del producto --------------------------------------------------------------------------------
                 subject_producto = item[4]
-                gr.add((subject_producto, RDF.type, ECSDI.Producto))
-                gr.add((subject_producto, ECSDI.Marca, Literal(item[0], datatype=XSD.string)))
-                gr.add((subject_producto, ECSDI.Modelo, Literal(item[1], datatype=XSD.string)))
-                gr.add((subject_producto, ECSDI.Nombre, Literal(item[2], datatype=XSD.string)))
-                gr.add((subject_producto, ECSDI.Precio, Literal(item[3], datatype=XSD.float)))
-                gr.add((subject_producto, ECSDI.Peso, Literal(item[5], datatype=XSD.float)))
-                gr.add((subject_sobre, ECSDI.Productos, URIRef(subject_producto)))
+                gr.add((subject_producto, RDF.type, Ontologia.Producto))
+                gr.add((subject_producto, Ontologia.Marca, Literal(item[0], datatype=XSD.string)))
+                gr.add((subject_producto, Ontologia.Modelo, Literal(item[1], datatype=XSD.string)))
+                gr.add((subject_producto, Ontologia.Nombre, Literal(item[2], datatype=XSD.string)))
+                gr.add((subject_producto, Ontologia.Precio, Literal(item[3], datatype=XSD.float)))
+                gr.add((subject_producto, Ontologia.Peso, Literal(item[5], datatype=XSD.float)))
+                gr.add((subject_sobre, Ontologia.Productos, URIRef(subject_producto)))
 
-            gr.add((subject_sobre, ECSDI.Precio_total, Literal(total_price, datatype=XSD.float)))
+            gr.add((subject_sobre, Ontologia.Precio_total, Literal(total_price, datatype=XSD.float)))
 
-            gr.add((content, ECSDI.Paquete_de_productos, URIRef(subject_sobre)))
+            gr.add((content, Ontologia.Paquete_de_productos, URIRef(subject_sobre)))
 
             Comprador = get_agent_info(agn.AgenteComprador, DirectoryAgent, UserClient, get_count())
 
@@ -450,10 +450,10 @@ def browser_retorna():
 
         logger.info("Creando la peticion de compra")
         g = Graph()
-        content = ECSDI['Peticion_retorno_' + str(get_count())]
-        g.add((content, RDF.type, ECSDI.Peticion_retorno))
+        content = Ontologia['Peticion_retorno_' + str(get_count())]
+        g.add((content, RDF.type, Ontologia.Peticion_retorno))
         for item in sells_checked:
-            g.add((content, ECSDI.CompraRetornada, URIRef(item)))
+            g.add((content, Ontologia.CompraRetornada, URIRef(item)))
 
         AgenteDevoluciones = get_agent_info(agn.AgenteDevoluciones, DirectoryAgent, UserClient, get_count())
 
@@ -509,15 +509,15 @@ def get_all_sells():
     graph_compres = Graph()
     graph_compres.parse(open('../Datos/Compras'), format='turtle')
 
-    for compraUrl in graph_compres.subjects(RDF.type, ECSDI.Compra):
+    for compraUrl in graph_compres.subjects(RDF.type, Ontologia.Compra):
         sell_count = 0
         single_sell = [compraUrl]
         products = []
-        for productUrl in graph_compres.objects(subject=compraUrl, predicate=ECSDI.Productos):
+        for productUrl in graph_compres.objects(subject=compraUrl, predicate=Ontologia.Productos):
             sell_count += 1
-            products.append(graph_compres.value(subject=productUrl, predicate=ECSDI.Nombre))
+            products.append(graph_compres.value(subject=productUrl, predicate=Ontologia.Nombre))
         single_sell.append(products)
-        for precio_total in graph_compres.objects(subject=compraUrl, predicate=ECSDI.Precio_total):
+        for precio_total in graph_compres.objects(subject=compraUrl, predicate=Ontologia.Precio_total):
             single_sell.append(precio_total)
         compras.append(single_sell)
         counts.append(sell_count)

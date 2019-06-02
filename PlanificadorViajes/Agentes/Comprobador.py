@@ -24,11 +24,11 @@ from multiprocessing import Process
 from flask import Flask, request
 from rdflib import Namespace, Graph, logger, RDF, Literal, XSD, URIRef
 
-from PlanificadorViajes.utils.ACLMessages import register_agent, build_message, get_message_properties, get_agent_info, \
+from PlanificadorViajes.ecsdi_modules.ACLMessages import register_agent, build_message, get_message_properties, get_agent_info, \
     send_message
-from PlanificadorViajes.utils.Agent import Agent
-from PlanificadorViajes.utils.FlaskServer import shutdown_server
-from PlanificadorViajes.utils.OntologyNamespaces import ECSDI, ACL
+from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia, ACL
 
 __author__ = 'ECSDIshop'
 
@@ -136,15 +136,15 @@ def communication():
 
             # Aqui realizariamos lo que pide la accion
 
-            if accion == ECSDI.Enviar_venta:
+            if accion == Ontologia.Enviar_venta:
                 logger.info('Recibimos la peticion para enviar la venta')
                 products = obtainProducts(gm)
                 gr = create_and_sendProducts(products)
 
-            elif accion == ECSDI.Recoger_devolucion:
+            elif accion == Ontologia.Recoger_devolucion:
                 logger.info('Recibimos la peticion de recoger la devolucion, para ello contratamos un envio')
                 date = dateToMillis(datetime.datetime.utcnow() + datetime.timedelta(days=9))
-                for item in gm.objects(subject=content, predicate=ECSDI.compra_a_devolver):
+                for item in gm.objects(subject=content, predicate=Ontologia.compra_a_devolver):
                     peso = crearEnvio(item, date)
                     requestTransport(date, peso)
                     logger.info('Eliminamos la venta de nuestro registro')
@@ -184,17 +184,17 @@ def stop():
 def create_and_sendProducts(gr):
     logger.info('Enviamos los productos')
 
-    content = ECSDI['Enviar_lot' + str(get_n_message())]
-    gr.add((content, RDF.type, ECSDI.Enviar_lot))
+    content = Ontologia['Enviar_lot' + str(get_n_message())]
+    gr.add((content, RDF.type, Ontologia.Enviar_lot))
 
-    subjectLoteProducto = ECSDI['Lote_producto' + str(random.randint(1, sys.float_info.max))]
-    gr.add((subjectLoteProducto, RDF.type, ECSDI.Lote_producto))
-    gr.add((subjectLoteProducto, ECSDI.Prioridad, Literal(1, datatype=XSD.integer)))
+    subjectLoteProducto = Ontologia['Lote_producto' + str(random.randint(1, sys.float_info.max))]
+    gr.add((subjectLoteProducto, RDF.type, Ontologia.Lote_producto))
+    gr.add((subjectLoteProducto, Ontologia.Prioridad, Literal(1, datatype=XSD.integer)))
 
-    for item in gr.subjects(RDF.type, ECSDI.Producto):
-        gr.add((subjectLoteProducto, ECSDI.productos, URIRef(item)))
+    for item in gr.subjects(RDF.type, Ontologia.Producto):
+        gr.add((subjectLoteProducto, Ontologia.productos, URIRef(item)))
 
-    gr.add((content, ECSDI.a_enviar, URIRef(subjectLoteProducto)))
+    gr.add((content, Ontologia.a_enviar, URIRef(subjectLoteProducto)))
 
     # Se ha creado el envio de un lato de productos, ahora se procedede a negociar el envio y enviarlo
     logger.info('Se envia el lote de productos')
@@ -209,24 +209,24 @@ def obtainProducts(gm):
     products = Graph()
 
     sell = None
-    for item in gm.subjects(RDF.type, ECSDI.Compra):
+    for item in gm.subjects(RDF.type, Ontologia.Compra):
         sell = item
 
     sellsGraph = Graph()
     sellsGraph.parse(open('../Datos/Compras'), format='turtle')
 
-    for item in sellsGraph.objects(sell, ECSDI.Productos):
-        marca = sellsGraph.value(subject=item, predicate=ECSDI.Marca)
-        nombre = sellsGraph.value(subject=item, predicate=ECSDI.Nombre)
-        modelo = sellsGraph.value(subject=item, predicate=ECSDI.Modelo)
-        precio = sellsGraph.value(subject=item, predicate=ECSDI.Precio)
-        peso = sellsGraph.value(subject=item, predicate=ECSDI.Peso)
-        products.add((item, RDF.type, ECSDI.Producto))
-        products.add((item, ECSDI.Marca, Literal(marca, datatype=XSD.string)))
-        products.add((item, ECSDI.Nombre, Literal(nombre, datatype=XSD.string)))
-        products.add((item, ECSDI.Modelo, Literal(modelo, datatype=XSD.string)))
-        products.add((item, ECSDI.Precio, Literal(precio, datatype=XSD.float)))
-        products.add((item, ECSDI.Peso, Literal(peso, datatype=XSD.float)))
+    for item in sellsGraph.objects(sell, Ontologia.Productos):
+        marca = sellsGraph.value(subject=item, predicate=Ontologia.Marca)
+        nombre = sellsGraph.value(subject=item, predicate=Ontologia.Nombre)
+        modelo = sellsGraph.value(subject=item, predicate=Ontologia.Modelo)
+        precio = sellsGraph.value(subject=item, predicate=Ontologia.Precio)
+        peso = sellsGraph.value(subject=item, predicate=Ontologia.Peso)
+        products.add((item, RDF.type, Ontologia.Producto))
+        products.add((item, Ontologia.Marca, Literal(marca, datatype=XSD.string)))
+        products.add((item, Ontologia.Nombre, Literal(nombre, datatype=XSD.string)))
+        products.add((item, Ontologia.Modelo, Literal(modelo, datatype=XSD.string)))
+        products.add((item, Ontologia.Precio, Literal(precio, datatype=XSD.float)))
+        products.add((item, Ontologia.Peso, Literal(peso, datatype=XSD.float)))
 
     return products
 
@@ -237,15 +237,15 @@ def obtenerPesoTotal(urlEnvio):
     gSends = Graph()
     gSends.parse(open('../Datos/Envios'), format='turtle')
     productsArray = []
-    for lote in gSends.objects(subject=urlEnvio, predicate=ECSDI.Envia):
-        for producto in gSends.objects(subject=lote, predicate=ECSDI.productos):
+    for lote in gSends.objects(subject=urlEnvio, predicate=Ontologia.Envia):
+        for producto in gSends.objects(subject=lote, predicate=Ontologia.productos):
             productsArray.append(producto)
 
 
     gProducts = Graph()
     gProducts.parse(open('../Datos/productos'), format='turtle')
     for item in productsArray:
-        peso_Total += float(gProducts.value(subject=item, predicate=ECSDI.Peso))
+        peso_Total += float(gProducts.value(subject=item, predicate=Ontologia.Peso))
 
     return peso_Total
 
@@ -255,12 +255,12 @@ def dateToMillis(date):
 
 
 def writeSends(gr, deliverDate):
-    subjectEnvio = ECSDI['Envio_' + str(random.randint(1, sys.float_info.max))]
+    subjectEnvio = Ontologia['Envio_' + str(random.randint(1, sys.float_info.max))]
 
-    gr.add((subjectEnvio, RDF.type, ECSDI.Envio))
-    gr.add((subjectEnvio, ECSDI.Fecha_de_entrega, Literal(deliverDate, datatype=XSD.float)))
-    for item in gr.subjects(RDF.type, ECSDI.Lote_producto):
-        gr.add((subjectEnvio, ECSDI.Envia, URIRef(item)))
+    gr.add((subjectEnvio, RDF.type, Ontologia.Envio))
+    gr.add((subjectEnvio, Ontologia.Fecha_de_entrega, Literal(deliverDate, datatype=XSD.float)))
+    for item in gr.subjects(RDF.type, Ontologia.Lote_producto):
+        gr.add((subjectEnvio, Ontologia.Envia, URIRef(item)))
 
     g = Graph()
     gr += g.parse(open('../Datos/Envios'), format='turtle')
@@ -273,15 +273,15 @@ def requestTransport(date, peso):
     logger.info('Pedimos el transporte')
 
     # Content of the message
-    content = ECSDI['Peticion_de_transporte_' + str(get_n_message())]
+    content = Ontologia['Peticion_de_transporte_' + str(get_n_message())]
 
     # Graph creation
     gr = Graph()
-    gr.add((content, RDF.type, ECSDI.Peticion_Transporte))
+    gr.add((content, RDF.type, Ontologia.Peticion_Transporte))
 
     # Anadir fecha y peso
-    gr.add((content, ECSDI.Fecha, Literal(date, datatype=XSD.float)))
-    gr.add((content, ECSDI.Peso_envio, Literal(peso, datatype=XSD.float)))
+    gr.add((content, Ontologia.Fecha, Literal(date, datatype=XSD.float)))
+    gr.add((content, Ontologia.Peso_envio, Literal(peso, datatype=XSD.float)))
 
     Negociador = get_agent_info(agn.AgenteNegociador, DirectoryAgent, AgenteCentroLogistico, get_n_message())
 
@@ -298,24 +298,24 @@ def prepareSellResponse(urlEnvio):
     enviaments.parse(open('../Datos/Envios'), format='turtle')
 
     urlProducts = []
-    for item in enviaments.objects(subject=urlEnvio, predicate=ECSDI.Envia):
-        for product in enviaments.objects(subject=item, predicate=ECSDI.productos):
+    for item in enviaments.objects(subject=urlEnvio, predicate=Ontologia.Envia):
+        for product in enviaments.objects(subject=item, predicate=Ontologia.productos):
             urlProducts.append(product)
 
     products = Graph()
     products.parse(open('../Datos/productos'), format='turtle')
 
     for item in urlProducts:
-        marca = products.value(subject=item, predicate=ECSDI.Marca)
-        modelo = products.value(subject=item, predicate=ECSDI.Modelo)
-        nombre = products.value(subject=item, predicate=ECSDI.Nombre)
-        precio = products.value(subject=item, predicate=ECSDI.Precio)
+        marca = products.value(subject=item, predicate=Ontologia.Marca)
+        modelo = products.value(subject=item, predicate=Ontologia.Modelo)
+        nombre = products.value(subject=item, predicate=Ontologia.Nombre)
+        precio = products.value(subject=item, predicate=Ontologia.Precio)
 
-        g.add((item, RDF.type, ECSDI.Producto))
-        g.add((item, ECSDI.Marca, Literal(marca, datatype=XSD.string)))
-        g.add((item, ECSDI.Modelo, Literal(modelo, datatype=XSD.string)))
-        g.add((item, ECSDI.Precio, Literal(precio, datatype=XSD.float)))
-        g.add((item, ECSDI.Nombre, Literal(nombre, datatype=XSD.string)))
+        g.add((item, RDF.type, Ontologia.Producto))
+        g.add((item, Ontologia.Marca, Literal(marca, datatype=XSD.string)))
+        g.add((item, Ontologia.Modelo, Literal(modelo, datatype=XSD.string)))
+        g.add((item, Ontologia.Precio, Literal(precio, datatype=XSD.float)))
+        g.add((item, Ontologia.Nombre, Literal(nombre, datatype=XSD.string)))
 
     return g
 
@@ -324,36 +324,36 @@ def prepareSellResponse(urlEnvio):
 def crearEnvio(sellUrl, date):
     enviarGrafo = Graph()
 
-    subjectEnvio = ECSDI['Envio_' + str(random.randint(1, sys.float_info.max))]
-    enviarGrafo.add((subjectEnvio, RDF.type, ECSDI.Envio))
-    enviarGrafo.add((subjectEnvio, ECSDI.Fecha_de_entrega, Literal(date, datatype=XSD.float)))
+    subjectEnvio = Ontologia['Envio_' + str(random.randint(1, sys.float_info.max))]
+    enviarGrafo.add((subjectEnvio, RDF.type, Ontologia.Envio))
+    enviarGrafo.add((subjectEnvio, Ontologia.Fecha_de_entrega, Literal(date, datatype=XSD.float)))
 
     openGraph = Graph()
     openGraph.parse(open('../Datos/Compras'), format='turtle')
 
-    subjectLote = ECSDI['Lote_producto' + str(random.randint(1, sys.float_info.max))]
-    enviarGrafo.add((subjectLote, RDF.type, ECSDI.Lote_producto))
-    enviarGrafo.add((subjectLote, ECSDI.Prioridad, Literal(1, datatype=XSD.integer)))
+    subjectLote = Ontologia['Lote_producto' + str(random.randint(1, sys.float_info.max))]
+    enviarGrafo.add((subjectLote, RDF.type, Ontologia.Lote_producto))
+    enviarGrafo.add((subjectLote, Ontologia.Prioridad, Literal(1, datatype=XSD.integer)))
 
     peso = 0.0
-    for item in openGraph.objects(subject=sellUrl, predicate=ECSDI.Productos):
-        marca = openGraph.value(subject=item, predicate=ECSDI.Marca)
-        modelo = openGraph.value(subject=item, predicate=ECSDI.Modelo)
-        nombre = openGraph.value(subject=item, predicate=ECSDI.Nombre)
-        precio = openGraph.value(subject=item, predicate=ECSDI.Precio)
-        peso = openGraph.value(subject=item, predicate=ECSDI.Peso)
+    for item in openGraph.objects(subject=sellUrl, predicate=Ontologia.Productos):
+        marca = openGraph.value(subject=item, predicate=Ontologia.Marca)
+        modelo = openGraph.value(subject=item, predicate=Ontologia.Modelo)
+        nombre = openGraph.value(subject=item, predicate=Ontologia.Nombre)
+        precio = openGraph.value(subject=item, predicate=Ontologia.Precio)
+        peso = openGraph.value(subject=item, predicate=Ontologia.Peso)
         peso += float(peso)
 
-        enviarGrafo.add((item, RDF.type, ECSDI.Producto))
-        enviarGrafo.add((item, ECSDI.Nombre, Literal(nombre, datatype=XSD.string)))
-        enviarGrafo.add((item, ECSDI.Marca, Literal(marca, datatype=XSD.string)))
-        enviarGrafo.add((item, ECSDI.Modelo, Literal(modelo, datatype=XSD.string)))
-        enviarGrafo.add((item, ECSDI.Peso, Literal(peso, datatype=XSD.float)))
-        enviarGrafo.add((item, ECSDI.Precio, Literal(precio, datatype=XSD.float)))
+        enviarGrafo.add((item, RDF.type, Ontologia.Producto))
+        enviarGrafo.add((item, Ontologia.Nombre, Literal(nombre, datatype=XSD.string)))
+        enviarGrafo.add((item, Ontologia.Marca, Literal(marca, datatype=XSD.string)))
+        enviarGrafo.add((item, Ontologia.Modelo, Literal(modelo, datatype=XSD.string)))
+        enviarGrafo.add((item, Ontologia.Peso, Literal(peso, datatype=XSD.float)))
+        enviarGrafo.add((item, Ontologia.Precio, Literal(precio, datatype=XSD.float)))
 
-        enviarGrafo.add((subjectLote, ECSDI.productos, URIRef(item)))
+        enviarGrafo.add((subjectLote, Ontologia.productos, URIRef(item)))
 
-    enviarGrafo.add((subjectEnvio, ECSDI.Envia, URIRef(subjectLote)))
+    enviarGrafo.add((subjectEnvio, Ontologia.Envia, URIRef(subjectLote)))
 
     g = Graph()
     enviarGrafo += g.parse(open('../Datos/Envios'), format='turtle')

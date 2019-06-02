@@ -12,8 +12,8 @@ import requests
 from rdflib import Graph, Literal
 from rdflib.namespace import FOAF, RDF, Namespace
 
-from PlanificadorViajes.utils.Agent import Agent
-from PlanificadorViajes.utils.OntoNamespaces import DSO, ACL
+from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import DSO, ACL
 
 __author__ = 'javier'
 

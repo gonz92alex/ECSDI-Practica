@@ -26,12 +26,12 @@ import socket
 from rdflib import Namespace, Graph, logger, RDF, XSD, Literal
 from flask import Flask, request
 
-from PlanificadorViajes.utils.ACLMessages import get_agent_info, register_agent, get_bag_agent_info, \
+from PlanificadorViajes.ecsdi_modules.ACLMessages import get_agent_info, register_agent, get_bag_agent_info, \
     send_message, build_message, get_message_properties
-from PlanificadorViajes.utils.FlaskServer import shutdown_server
-from PlanificadorViajes.utils.Agent import Agent
-from PlanificadorViajes.utils.OntoNamespaces import ACL
-from PlanificadorViajes.utils.OntologyNamespaces import ECSDI
+from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
+from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
 
 __author__ = 'Amazon V2'
 
@@ -143,22 +143,22 @@ def comunicacion():
             content = msgdic['content']
             accion = gm.value(subject=content, predicate=RDF.type)
 
-            if accion == ECSDI.Peticion_Busqueda:
+            if accion == Ontologia.Peticion_Busqueda:
                 logger.info('Agente Buscador recibe una peticion de búsqueda, la tratamos')
-                restricciones = gm.objects(content, ECSDI.Restricciones)
+                restricciones = gm.objects(content, Ontologia.Restricciones)
                 restricciones_vec = {}
                 for restriccion in restricciones:
-                    if gm.value(subject=restriccion, predicate=RDF.type) == ECSDI.Restriccion_Marca:
-                        marca = gm.value(subject=restriccion, predicate=ECSDI.Marca)
+                    if gm.value(subject=restriccion, predicate=RDF.type) == Ontologia.Restriccion_Marca:
+                        marca = gm.value(subject=restriccion, predicate=Ontologia.Marca)
                         logger.info('MARCA: ' + marca)
                         restricciones_vec['brand'] = marca
-                    elif gm.value(subject=restriccion, predicate=RDF.type) == ECSDI.Restriccion_modelo:
-                        modelo = gm.value(subject=restriccion, predicate=ECSDI.Modelo)
+                    elif gm.value(subject=restriccion, predicate=RDF.type) == Ontologia.Restriccion_modelo:
+                        modelo = gm.value(subject=restriccion, predicate=Ontologia.Modelo)
                         logger. info('MODELO: ' + modelo)
                         restricciones_vec['modelo'] = modelo
-                    elif gm.value(subject=restriccion, predicate=RDF.type) == ECSDI.Rango_precio:
-                        preu_max = gm.value(subject=restriccion, predicate=ECSDI.Precio_max)
-                        preu_min = gm.value(subject=restriccion, predicate=ECSDI.Precio_min)
+                    elif gm.value(subject=restriccion, predicate=RDF.type) == Ontologia.Rango_precio:
+                        preu_max = gm.value(subject=restriccion, predicate=Ontologia.Precio_max)
+                        preu_min = gm.value(subject=restriccion, predicate=Ontologia.Precio_min)
                         if preu_min:
                             logger.info('Preu minim: ' + preu_min)
                             restricciones_vec['min_price'] = preu_min.toPython()
@@ -213,7 +213,7 @@ def findFlights(origin=None, destination=None):
 
     graph_query = graph.query(query)
     result = Graph()
-    result.bind('ECSDI', ECSDI)
+    result.bind('ECSDI', Ontologia)
     product_count = 0
     for row in graph_query:
         nombre = row.nombre
@@ -224,12 +224,12 @@ def findFlights(origin=None, destination=None):
         logger.debug(nombre, marca, modelo, precio)
         subject = row.producto
         product_count += 1
-        result.add((subject, RDF.type, ECSDI.Producte))
-        result.add((subject, ECSDI.Marca, Literal(marca, datatype=XSD.string)))
-        result.add((subject, ECSDI.Modelo, Literal(modelo, datatype=XSD.string)))
-        result.add((subject, ECSDI.Precio, Literal(precio, datatype=XSD.float)))
-        result.add((subject, ECSDI.Peso, Literal(peso, datatype=XSD.float)))
-        result.add((subject, ECSDI.Nombre, Literal(nombre, datatype=XSD.string)))
+        result.add((subject, RDF.type, Ontologia.Producte))
+        result.add((subject, Ontologia.Marca, Literal(marca, datatype=XSD.string)))
+        result.add((subject, Ontologia.Modelo, Literal(modelo, datatype=XSD.string)))
+        result.add((subject, Ontologia.Precio, Literal(precio, datatype=XSD.float)))
+        result.add((subject, Ontologia.Peso, Literal(peso, datatype=XSD.float)))
+        result.add((subject, Ontologia.Nombre, Literal(nombre, datatype=XSD.string)))
     return result
 
 

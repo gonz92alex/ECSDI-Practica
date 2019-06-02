@@ -27,12 +27,12 @@ import socket
 from rdflib import Namespace, Graph, logger, RDF, XSD, Literal
 from flask import Flask, request
 
-from PlanificadorViajes.utils.ACLMessages import get_message_properties, build_message, register_agent, send_message, \
+from PlanificadorViajes.ecsdi_modules.ACLMessages import get_message_properties, build_message, register_agent, send_message, \
     get_bag_agent_info
-from PlanificadorViajes.utils.FlaskServer import shutdown_server
-from PlanificadorViajes.utils.Agent import Agent
-from PlanificadorViajes.utils.OntoNamespaces import ACL
-from PlanificadorViajes.utils.OntologyNamespaces import ECSDI
+from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
+from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
+from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
 
 __author__ = 'Amazon V2'
 
@@ -156,7 +156,7 @@ def comunicacion():
             accion = gm.value(subject=content, predicate=RDF.type)
 
             # Accion de busqueda
-            if accion == ECSDI.Peticion_Transporte:
+            if accion == Ontologia.Peticion_Transporte:
                 logger.info("Negociamos con los transportistas")
                 respondePeticion(gm, content)
                 gr = Graph()
@@ -198,11 +198,11 @@ def tidyup():
 
 def requestOffer(agent, peso, fecha, destino):
     gr = Graph()
-    subject = ECSDI['peticion-oferta']
-    gr.add((subject, RDF.type, ECSDI.Pedir_oferta_transporte))
-    gr.add((subject, ECSDI.Destino, Literal(destino)))
-    gr.add((subject, ECSDI.Plazo_maximo_entrega, Literal(fecha)))
-    gr.add((subject, ECSDI.Peso_envio, Literal(peso)))
+    subject = Ontologia['peticion-oferta']
+    gr.add((subject, RDF.type, Ontologia.Pedir_oferta_transporte))
+    gr.add((subject, Ontologia.Destino, Literal(destino)))
+    gr.add((subject, Ontologia.Plazo_maximo_entrega, Literal(fecha)))
+    gr.add((subject, Ontologia.Peso_envio, Literal(peso)))
     resp = send_message(build_message(gr, ACL['call-for-proposal'], content=subject, receiver=agent.uri,
                                       sender=AgenteNegociador.uri), agent.address)
     msg = get_message_properties(resp)
@@ -210,7 +210,7 @@ def requestOffer(agent, peso, fecha, destino):
         logger.warn('Nos ha rechazado un agente')
         return None
     elif msg['performative'] == ACL.propose:
-        precio = resp.value(msg['content'], ECSDI.Precio_envio)
+        precio = resp.value(msg['content'], Ontologia.Precio_envio)
         return Offer(address=agent.address, price=precio.toPython())
     logger.error('No se entiende')
     return None
@@ -226,10 +226,10 @@ def acceptOffer(offer):
 def counter_offer(offer):
     logger.info('Asking counter-offer to ' + offer.address)
     gr = Graph()
-    subject = ECSDI['contra-oferta']
-    gr.add((subject, RDF.type, ECSDI.Contraoferta))
+    subject = Ontologia['contra-oferta']
+    gr.add((subject, RDF.type, Ontologia.Contraoferta))
     new_price = offer.price - 2
-    gr.add((subject, ECSDI.Precio_envio, Literal(new_price)))
+    gr.add((subject, Ontologia.Precio_envio, Literal(new_price)))
     resp = send_message(build_message(gr, ACL['counter-proposal'], content=subject, sender=AgenteNegociador.uri),
                         offer.address)
     msg = get_message_properties(resp)
@@ -288,8 +288,8 @@ class Offer(object):
 
 
 def respondePeticion(gm, content):
-    peso = gm.value(subject=content, predicate=ECSDI.Peso_envio)
-    fecha = gm.value(subject=content, predicate=ECSDI.Fecha)
+    peso = gm.value(subject=content, predicate=Ontologia.Peso_envio)
+    fecha = gm.value(subject=content, predicate=Ontologia.Fecha)
 
     offer = requestTransports(peso, datetime.datetime.fromtimestamp(float(fecha) / 1000.0), 'Barcelona')
 
