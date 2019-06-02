@@ -28,10 +28,10 @@ from flask import Flask, request
 
 from PlanificadorViajes.utils.ACLMessages import get_agent_info, register_agent, get_bag_agent_info, \
     send_message, build_message, get_message_properties
-from PracticaTienda.utils.FlaskServer import shutdown_server
-from PracticaTienda.utils.Agent import Agent
-from PracticaTienda.utils.OntoNamespaces import ACL
-from PracticaTienda.utils.OntologyNamespaces import ECSDI
+from PlanificadorViajes.utils.FlaskServer import shutdown_server
+from PlanificadorViajes.utils.Agent import Agent
+from PlanificadorViajes.utils.OntoNamespaces import ACL
+from PlanificadorViajes.utils.OntologyNamespaces import ECSDI
 
 __author__ = 'Amazon V2'
 

@@ -27,12 +27,12 @@ import socket
 from rdflib import Namespace, Graph, logger, RDF, XSD, Literal
 from flask import Flask, request
 
-from PracticaTienda.utils.ACLMessages import get_message_properties, build_message, register_agent, send_message, \
+from PlanificadorViajes.utils.ACLMessages import get_message_properties, build_message, register_agent, send_message, \
     get_bag_agent_info
-from PracticaTienda.utils.FlaskServer import shutdown_server
-from PracticaTienda.utils.Agent import Agent
-from PracticaTienda.utils.OntoNamespaces import ACL
-from PracticaTienda.utils.OntologyNamespaces import ECSDI
+from PlanificadorViajes.utils.FlaskServer import shutdown_server
+from PlanificadorViajes.utils.Agent import Agent
+from PlanificadorViajes.utils.OntoNamespaces import ACL
+from PlanificadorViajes.utils.OntologyNamespaces import ECSDI
 
 __author__ = 'Amazon V2'
 

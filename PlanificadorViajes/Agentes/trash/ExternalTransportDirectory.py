@@ -7,11 +7,11 @@ from flask import Flask, request
 from rdflib import Graph, RDF, Namespace, RDFS, BNode, URIRef
 from rdflib.namespace import FOAF
 
-from PracticaTienda.utils.ACLMessages import build_message, get_message_properties
-from PracticaTienda.utils.Agent import Agent
-from PracticaTienda.utils.FlaskServer import shutdown_server
-from PracticaTienda.utils.Logging import config_logger
-from PracticaTienda.utils.OntoNamespaces import ACL, DSO
+from PlanificadorViajes.utils.ACLMessages import build_message, get_message_properties
+from PlanificadorViajes.utils.Agent import Agent
+from PlanificadorViajes.utils.FlaskServer import shutdown_server
+from PlanificadorViajes.utils.Logging import config_logger
+from PlanificadorViajes.utils.OntoNamespaces import ACL, DSO
 
 __author__ = 'amazdonde'
 

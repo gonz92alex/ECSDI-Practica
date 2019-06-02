@@ -15,10 +15,10 @@ from flask import Flask, render_template, request
 from rdflib import Graph, Namespace, RDF, URIRef, Literal, XSD
 
 from PlanificadorViajes.utils.ACLMessages import Agent,get_agent_info, get_message_properties, build_message, send_message
-from PracticaTienda.utils.FlaskServer import shutdown_server
-from PracticaTienda.utils.Logging import config_logger
-from PracticaTienda.utils.OntoNamespaces import ACL
-from PracticaTienda.utils.OntologyNamespaces import ECSDI
+from PlanificadorViajes.utils.FlaskServer import shutdown_server
+from PlanificadorViajes.utils.Logging import config_logger
+from PlanificadorViajes.utils.OntoNamespaces import ACL
+from PlanificadorViajes.utils.OntologyNamespaces import ECSDI
 
 __author__ = 'amazadonde'
 

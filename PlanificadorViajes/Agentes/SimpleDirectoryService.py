@@ -26,11 +26,11 @@ from flask import Flask, request, render_template
 from rdflib import Graph, RDF, Namespace, RDFS
 from rdflib.namespace import FOAF, RDFS
 
-from PracticaTienda.utils.OntoNamespaces import ACL, DSO
-from PracticaTienda.utils.FlaskServer import shutdown_server
-from PracticaTienda.utils.Agent import Agent
-from PracticaTienda.utils.ACLMessages import build_message, get_message_properties
-from PracticaTienda.utils.Logging import config_logger
+from PlanificadorViajes.utils.OntoNamespaces import ACL, DSO
+from PlanificadorViajes.utils.FlaskServer import shutdown_server
+from PlanificadorViajes.utils.Agent import Agent
+from PlanificadorViajes.utils.ACLMessages import build_message, get_message_properties
+from PlanificadorViajes.utils.Logging import config_logger
 
 __author__ = 'javier'
 
