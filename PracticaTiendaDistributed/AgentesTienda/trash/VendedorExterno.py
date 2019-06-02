@@ -118,7 +118,7 @@ def browser_registrarProducto():
     via un formulario
     """
     if request.method == 'GET':
-        return render_template('registrarProductos.html')
+        return render_template('RegistrarProductos.html')
     else:
         Marca = request.form['Marca']
         Nombre = request.form['Nombre']
