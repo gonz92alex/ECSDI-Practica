@@ -24,11 +24,11 @@ from multiprocessing import Process
 from flask import Flask, request
 from rdflib import Namespace, Graph, logger, RDF, Literal, XSD, URIRef
 
-from PlanificadorViajes.ecsdi_modules.ACLMessages import register_agent, build_message, get_message_properties, get_agent_info, \
+from PlanificadorViajes.AgentUtil.ACLMessages import register_agent, build_message, get_message_properties, get_agent_info, \
     send_message
-from PlanificadorViajes.ecsdi_modules.Agent import Agent
-from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
-from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia, ACL
+from PlanificadorViajes.AgentUtil.Agent import Agent
+from PlanificadorViajes.AgentUtil.FlaskServer import shutdown_server
+from PlanificadorViajes.AgentUtil.OntologyNamespaces import Ontologia, ACL
 
 __author__ = 'ECSDIshop'
 

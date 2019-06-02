@@ -17,7 +17,6 @@ Asume que el agente de registro esta en el puerto 9000
 from __future__ import print_function
 
 import argparse
-import sys
 
 from multiprocessing import Process, Queue
 import socket
@@ -26,11 +25,11 @@ import socket
 from rdflib import Namespace, Graph, logger, RDF, XSD, Literal
 from flask import Flask, request
 
-from PlanificadorViajes.ecsdi_modules.ACLMessages import get_message_properties, build_message, register_agent
-from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
-from PlanificadorViajes.ecsdi_modules.Agent import Agent
-from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
-from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
+from PlanificadorViajes.AgentUtil.ACLMessages import get_message_properties, build_message, register_agent
+from PlanificadorViajes.AgentUtil.FlaskServer import shutdown_server
+from PlanificadorViajes.AgentUtil.Agent import Agent
+from PlanificadorViajes.AgentUtil.OntologyNamespaces import ACL
+from PlanificadorViajes.AgentUtil.OntologyNamespaces import Ontologia
 
 __author__ = 'Amazon V2'
 

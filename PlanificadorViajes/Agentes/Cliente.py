@@ -14,11 +14,11 @@ from multiprocessing import Process
 from flask import Flask, render_template, request
 from rdflib import Graph, Namespace, RDF, URIRef, Literal, XSD
 
-from PlanificadorViajes.ecsdi_modules.ACLMessages import Agent,get_agent_info, get_message_properties, build_message, send_message
-from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
-from PlanificadorViajes.ecsdi_modules.Logging import config_logger
-from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
-from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
+from PlanificadorViajes.AgentUtil.ACLMessages import Agent,get_agent_info, build_message, send_message
+from PlanificadorViajes.AgentUtil.FlaskServer import shutdown_server
+from PlanificadorViajes.AgentUtil.Logging import config_logger
+from PlanificadorViajes.AgentUtil.OntologyNamespaces import ACL
+from PlanificadorViajes.AgentUtil.OntologyNamespaces import Ontologia
 
 __author__ = 'amazadonde'
 
@@ -69,7 +69,7 @@ agn = Namespace("http://www.agentes.org#")
 mss_cnt = 0
 
 # Datos del Agente
-UserClient = Agent('UserClient',
+UserClient = Agent('Cliente',
                           agn.UserClient,
                           'http://%s:%d/comm' % (hostname, port),
                           'http://%s:%d/Stop' % (hostname, port))

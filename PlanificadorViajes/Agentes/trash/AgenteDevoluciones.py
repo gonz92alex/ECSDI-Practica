@@ -25,8 +25,8 @@ from flask import Flask, request
 
 from PlanificadorViajes.ecsdi_modules.ACLMessages import build_message, get_message_properties, get_agent_info, send_message, \
     register_agent
-from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
-from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.AgentUtil.FlaskServer import shutdown_server
+from PlanificadorViajes.AgentUtil.Agent import Agent
 from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
 from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
 

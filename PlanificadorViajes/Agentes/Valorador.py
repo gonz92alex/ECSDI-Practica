@@ -23,12 +23,12 @@ import socket
 from rdflib import Namespace, Graph, logger, RDF, URIRef
 from flask import Flask, request
 
-from PlanificadorViajes.ecsdi_modules.ACLMessages import register_agent, get_message_properties, build_message, get_agent_info, \
+from PlanificadorViajes.AgentUtil.ACLMessages import register_agent, get_message_properties, build_message, get_agent_info, \
     send_message
-from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
-from PlanificadorViajes.ecsdi_modules.Agent import Agent
-from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL
-from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import Ontologia
+from PlanificadorViajes.AgentUtil.FlaskServer import shutdown_server
+from PlanificadorViajes.AgentUtil.Agent import Agent
+from PlanificadorViajes.AgentUtil.OntologyNamespaces import ACL
+from PlanificadorViajes.AgentUtil.OntologyNamespaces import Ontologia
 
 __author__ = 'Amazon V2'
 

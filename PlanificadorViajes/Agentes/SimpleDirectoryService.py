@@ -18,19 +18,19 @@ directory-service-ontology.owl
 """
 
 from __future__ import print_function
-from multiprocessing import Process, Queue
+from multiprocessing import Queue
 import socket
 import argparse
 
 from flask import Flask, request, render_template
-from rdflib import Graph, RDF, Namespace, RDFS
+from rdflib import Graph, RDF, Namespace
 from rdflib.namespace import FOAF, RDFS
 
-from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL, DSO
-from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
-from PlanificadorViajes.ecsdi_modules.Agent import Agent
-from PlanificadorViajes.ecsdi_modules.ACLMessages import build_message, get_message_properties
-from PlanificadorViajes.ecsdi_modules.Logging import config_logger
+from PlanificadorViajes.AgentUtil.OntologyNamespaces import ACL, DSO
+from PlanificadorViajes.AgentUtil.FlaskServer import shutdown_server
+from PlanificadorViajes.AgentUtil.Agent import Agent
+from PlanificadorViajes.AgentUtil.ACLMessages import build_message, get_message_properties
+from PlanificadorViajes.AgentUtil.Logging import config_logger
 
 __author__ = 'javier'
 

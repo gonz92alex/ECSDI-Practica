@@ -8,8 +8,8 @@ from rdflib import Graph, RDF, Namespace, RDFS, BNode, URIRef
 from rdflib.namespace import FOAF
 
 from PlanificadorViajes.ecsdi_modules.ACLMessages import build_message, get_message_properties
-from PlanificadorViajes.ecsdi_modules.Agent import Agent
-from PlanificadorViajes.ecsdi_modules.FlaskServer import shutdown_server
+from PlanificadorViajes.AgentUtil.Agent import Agent
+from PlanificadorViajes.AgentUtil.FlaskServer import shutdown_server
 from PlanificadorViajes.ecsdi_modules.Logging import config_logger
 from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import ACL, DSO
 

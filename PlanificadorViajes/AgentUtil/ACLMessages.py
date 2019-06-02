@@ -12,7 +12,7 @@ import requests
 from rdflib import Graph, Literal
 from rdflib.namespace import FOAF, RDF, Namespace
 
-from PlanificadorViajes.ecsdi_modules.Agent import Agent
+from PlanificadorViajes.AgentUtil.Agent import Agent
 from PlanificadorViajes.ecsdi_modules.OntologyNamespaces import DSO, ACL
 
 __author__ = 'javier'

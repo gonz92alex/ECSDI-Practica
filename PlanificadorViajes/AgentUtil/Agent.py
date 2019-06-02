@@ -12,7 +12,7 @@ Agent
 __author__ = 'bejar'
 
 
-class Agent():
+class Agent(object):
     def __init__(self, name, uri, address, stop):
         self.name = name
         self.uri = uri
