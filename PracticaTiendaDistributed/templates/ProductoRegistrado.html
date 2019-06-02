@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/67/PNG/512/shoppingcartfull_compras_carr_13340.png">
+    <title>ECSDIshop | Registro de Producto</title>
+</head>
+<body>
+    <h1>Registro realizado correctamente</h1>
+    <br>
+    <table cellpadding="5px" border="2">
+        <tr>
+            <th><b>NOMBRE</b></th>
+            <th><b>MARCA</b></th>
+            <th><b>MODELO</b></th>
+            <th><b>PRECIO</b></th>
+            <th><b>PESO</b></th>
+        </tr>
+        <tr>
+            <td>{{ producto.Nombre }}</td>
+            <td>{{ producto.Marca }}</td>
+            <td>{{ producto.Modelo }}</td>
+            <td>{{ producto.Precio }}</td>
+            <td>{{ producto.Peso }}</td>
+        </tr>
+    </table>
+    <br>
+    <a href="./registrarProducto">Volver</a>
+</body>
+</html>

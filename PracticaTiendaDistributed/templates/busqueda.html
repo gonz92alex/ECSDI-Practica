@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/67/PNG/512/shoppingcartfull_compras_carr_13340.png">
+    <title>ECSDIshop | Busqueda de productes</title>
+</head>
+<body>
+    <h1>Búsqueda de Productos</h1>
+    <a href="/">< Volver</a>
+    <div style="size: 15px; padding-top: 15px">Parametros para la búsqueda</div>
+        <form method="post", style="margin-top: 10px">
+            <input type="text" name="nombre" placeholder="Nombre..."/><br>
+            <input type="text" name="marca" placeholder="Marca..."/><br>
+            <input type="number" name="max_price" step="0.01" min="0.0" placeholder="Precio máximo..."/><br>
+            <input type="number" name="min_price" step="0.01" min="0.0" placeholder="Precio Mínimo..."/><br>
+            <input type="submit" name="submit" value="Buscar">
+        </form>
+        {% if products %}
+            <h2>Productos Buscados</h2>
+        <form method="post">
+            <table cellpadding="5px" border="2">
+                <tr>
+                    <th><b>NOMBRE</b></th>
+                    <th><b>MARCA</b></th>
+                    <th><b>MODELO</b></th>
+                    <th><b>PRECIO</b></th>
+                </tr>
+                {% for item in products %}
+                    <tr>
+                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.marca }}</td>
+                        <td>{{ item.modelo }}</td>
+                        <td>{{ item.precio }}</td>
+                        <td><input type="checkbox" name="checkbox" value="{{ products.index(item) }}"></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <input type="submit" name="submit" value="Comprar">
+        </form>
+    {% endif %}
+    {% if productos_recomendados %}
+        <h2>Productos Recomendados</h2>
+                <table cellpadding="5px" border="2">
+                    <tr>
+                        <th><b>NOMBRE</b></th>
+                        <th><b>MARCA</b></th>
+                        <th><b>MODELO</b></th>
+                        <th><b>PRECIO</b></th>
+                    </tr>
+                    {% for item in productos_recomendados %}
+                    {% if productos_recomendados.index(item) <= 5 %}
+                        <tr>
+                            <td>{{ item.nombre }}</td>
+                            <td>{{ item.marca }}</td>
+                            <td>{{ item.modelo }}</td>
+                            <td>{{ item.precio }}</td>
+                        </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+    {% endif %}
+</body>
+</html>
