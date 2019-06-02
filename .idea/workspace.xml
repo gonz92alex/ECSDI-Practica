@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c9920924-3ff8-45e2-a879-9edf20d147ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ECSDI-SKL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ECSDI-SKL.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/AgenteBuscador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Planificador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/AgenteCentroLogistico.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Comprobador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/AgenteComprador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Valorador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/AgenteDevoluciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/AgenteDevoluciones.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/AgenteNegociador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/AgenteNegociador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/AgentePublicador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Pagador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/AgenteRecomendaciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/AgenteRecomendaciones.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/AgenteValoraciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Recomendador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/ExternalTransportDirectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/ExternalTransportDirectory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/SimpleDirectoryService.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/SimpleDirectoryService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Transporte1.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/Transporte1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Transporte2.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/Transporte2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/UserClient.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Cliente.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/VendedorExterno.py" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/VendedorExterno.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/product.rdf" beforeDir="false" afterPath="$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/trash/product.rdf" afterDir="false" />
-    </list>
+    <list default="true" id="c9920924-3ff8-45e2-a879-9edf20d147ba" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +17,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Cliente.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7650" />
+            <state relative-caret-position="-3672" />
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Valorador.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -92,6 +84,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gonza\Documents\ECSDI\ECSDI-SKL\PracticaTiendaDistributed\AgentesTienda\trash" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -115,12 +113,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559486070544</updated>
-      <workItem from="1559486071959" duration="316000" />
+      <workItem from="1559486071959" duration="498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="316000" />
+    <option name="totallyTimeSpent" value="498000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="20" width="1260" height="944" extended-state="0" />
@@ -162,8 +160,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Cliente.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7650" />
+        <state relative-caret-position="-3672" />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PracticaTiendaDistributed/AgentesTienda/Valorador.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
