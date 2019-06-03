@@ -190,7 +190,7 @@ def comunicacion():
                 #jsonVuelos = buscarVuelos(ciudad_origen, ciudad_destino)
                 #print(jsonVuelos)
 
-                return gr.serialize(format="xml"), 200
+                return response.serialize(format="xml"), 200
 
                 # serialize = gr.serialize(format='xml')
                 # return serialize, 200
