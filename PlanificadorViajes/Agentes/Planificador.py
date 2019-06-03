@@ -72,8 +72,8 @@ messages_cnt = 0
 
 # Datos del Agente
 
-AgenteBuscador = Agent('Buscador',
-                       agn.AgenteBuscador,
+AgentePlanificador = Agent('Planificador',
+                       agn.AgentePlanificador,
                        'http://%s:%d/comm' % (hostname, port),
                        'http://%s:%d/Stop' % (hostname, port))
 
@@ -108,7 +108,7 @@ def register_message():
 
     logger.info('Nos registramos')
 
-    gr = register_agent(AgenteBuscador, DirectoryAgent, AgenteBuscador.uri, get_count())
+    gr = register_agent(AgentePlanificador, DirectoryAgent, AgentePlanificador.uri, get_count())
     return gr
 
 
@@ -129,12 +129,12 @@ def comunicacion():
     #Comprobacion del mensaje
 
     if msgdic is None:
-        gr = build_message(Graph(), ACL['no_entendido'],sender=AgenteBuscador.uri, msgcnt=get_count())
+        gr = build_message(Graph(), ACL['no_entendido'],sender=AgentePlanificador.uri, msgcnt=get_count())
     else:
         performative = msgdic['performative']
 
         if performative != ACL.request:
-            gr = build_message(Graph(), ACL['no_entendido'], sender=AgenteBuscador.uri, msgcnt=get_count())
+            gr = build_message(Graph(), ACL['no_entendido'], sender=AgentePlanificador.uri, msgcnt=get_count())
 
         else:
 
@@ -142,7 +142,7 @@ def comunicacion():
             accion = gm.value(subject=content, predicate=RDF.type)
 
             if accion == Ontologia.Peticion_Buscar:
-                logger.info('Agente Buscador recibe una peticion de búsqueda, la tratamos')
+                logger.info('Agente Planificador recibe una peticion de búsqueda, la tratamos')
                 restricciones = gm.objects(content, Ontologia.Restricciones)
                 restricciones_vec = {}
                 for restriccion in restricciones:

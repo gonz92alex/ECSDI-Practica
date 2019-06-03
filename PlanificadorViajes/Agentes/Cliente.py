@@ -116,31 +116,31 @@ def planificar():
 
         # Generar: FormularioPlanCliente        
         
+        Planificador = get_agent_info(agn.AgentePlanificador, DirectoryAgent, UserClient, get_count())
+
+        logger.info("Agente Planificador encontrado")
+
         contentResult = Ontologia['Peticion_Buscar' + str(get_count())]
         gr = Graph()
-        gr.add((contentResult, RDF.type, Ontologia.Peticion_Planificar))
-        Buscador = get_agent_info(agn.AgenteBuscador, DirectoryAgent, UserClient, get_count())
+        gr.add((contentResult, RDF.type, Ontologia.EnviarFormularioPlanificar))
 
-        # logger.info("LLEGA HASTA AQUI!\n\n\n") #no llega
+        logger.info("STEP1!!!!!!!!!!!!!!!!!!!")
 
-        # FormularioPlanCliente = Ontologia.FormularioPlanCliente
-        # gr.add((FormularioPlanCliente, Ontologia.tematica, Literal(request.form['tematica'])))
-        # gr.add((FormularioPlanCliente, Ontologia.ciudad_destino, Literal(request.form['ciudad_destino'])))
-        # gr.add((FormularioPlanCliente, Ontologia.ciudad_origen, Literal(request.form['ciudad_origen'])))
-        # gr.add((FormularioPlanCliente, Ontologia.precio_max, Literal(request.form['precio_max'])))
-        # gr.add((FormularioPlanCliente, Ontologia.precio_min, Literal(request.form['precio_min'])))
-        # gr.add((FormularioPlanCliente, Ontologia.beginning, Literal(request.form['beginning'])))
-        # gr.add((FormularioPlanCliente, Ontologia.end, Literal(request.form['end'])))
+        EnviarFormularioPlanificar = Ontologia.FormularioPlanCliente
+        gr.add((EnviarFormularioPlanificar, Ontologia.tematica, Literal(request.form['tematica'])))
+        gr.add((EnviarFormularioPlanificar, Ontologia.ciudad_destino, Literal(request.form['ciudad_destino'])))
+        gr.add((EnviarFormularioPlanificar, Ontologia.ciudad_origen, Literal(request.form['ciudad_origen'])))
+        gr.add((EnviarFormularioPlanificar, Ontologia.precio_max, Literal(request.form['precio_max'])))
+        gr.add((EnviarFormularioPlanificar, Ontologia.precio_min, Literal(request.form['precio_min'])))
+        gr.add((EnviarFormularioPlanificar, Ontologia.beginning, Literal(request.form['beginning'])))
+        gr.add((EnviarFormularioPlanificar, Ontologia.end, Literal(request.form['end'])))
 
-        for s, p, o in gr:
-            logger.info(s)
-            logger.info(p)
-            logger.info(o)
+        logger.info("STEP2!!!!!!!!!!!!!!!!!!!")
 
         gr1 = send_message(
-            build_message(gr, perf=ACL.request, sender=UserClient.uri, receiver=Buscador.uri,
+            build_message(gr, perf=ACL.request, sender=UserClient.uri, receiver=Planificador.uri,
                           msgcnt=get_count(),
-                          content=contentResult), Buscador.address)
+                          content=contentResult), Planificador.address)
 
         logger.info("MESSAGE GENERATED!!!!!!!!!!!!!!!!!!!!!")
 
@@ -375,12 +375,12 @@ def browser_cerca():
                     gr.add((Sujeto_precios, Ontologia.Precio_max, Literal(max_price)))
                 gr.add((contentResult, Ontologia.Restricciones, URIRef(Sujeto_precios)))
 
-            Buscador = get_agent_info(agn.AgenteBuscador, DirectoryAgent, UserClient, get_count())
+            Planificador = get_agent_info(agn.AgentePlanificador, DirectoryAgent, UserClient, get_count())
 
             gr2 = send_message(
-                build_message(gr, perf=ACL.request, sender=UserClient.uri, receiver=Buscador.uri,
+                build_message(gr, perf=ACL.request, sender=UserClient.uri, receiver=Planificador.uri,
                               msgcnt=get_count(),
-                              content=contentResult), Buscador.address)
+                              content=contentResult), Planificador.address)
 
             index = 0
             subject_pos = {}
