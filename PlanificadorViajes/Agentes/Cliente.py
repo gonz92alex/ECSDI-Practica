@@ -159,6 +159,10 @@ def planificar():
                     plan['actividades'] =  o
                 elif p == Ontologia.vuelo:
                     plan["vuelo"] = urllib.parse.unquote(o)
+                elif p == Ontologia.nomHotel:
+                    plan["nomHotel"] = urllib.parse.unquote(o)
+                elif p == Ontologia.linkHotel:
+                    plan["linkHotel"] = urllib.parse.unquote(o)
 
             #plan["vuelo"] = "https://www.google.com/"
             return render_template('confirmar_y_pagar.html', plan=plan)
@@ -211,4 +215,3 @@ if __name__ == '__main__':
     # Esperamos a que acaben los behaviors
     ab1.join()
     logger.info('The End')
-    
