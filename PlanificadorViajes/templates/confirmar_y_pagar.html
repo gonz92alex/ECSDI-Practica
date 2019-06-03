@@ -4,12 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
     <style>
-        
     </style>
 </head>
 <body>
-    Confirmar y pagar
+    <div class="container py-5 w-75">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Confirmar y Pagar</h2>
+                </div>
+                <div class="card-body">
+                        <div class="form-group">
+                        <p>Email:  <span class="font-weight-bold">{{plan['correo']}}</span></p>
+                        <p>Temática:  <span class="font-weight-bold">{{plan['tematica']}}</p>
+                        <p>Coste (€):  <span class="font-weight-bold">{{plan['coste']}}</p>
+                        <hr/>
+                        <div class="form-row">
+                            <div class="col">
+                                <p>Ciudad de destino:  <span class="font-weight-bold">{{plan['ciudad_destino']}}</p>
+                            </div>
+                            <div class="col">
+                                <p >Ciudad de origen:  <span class="font-weight-bold">{{plan['ciudad_origen']}}</p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <p>From:  <span class="font-weight-bold">{{plan['fechaIda']}}</p>
+                                </div>
+                                <div class="col">
+                                    <p>To:  <span class="font-weight-bold">{{plan['fechaVuelta']}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        <hr/>
+                        vuelos
+                        <hr/>
+                        estancia
+                        <hr/>
+                        actividades
+                        <hr/>
+                        
+                        <form method="POST">
+                            <p stlye="display:block">*Antes de confirmar asegurate de reservar cada instancia de vuelo y alojamiento*</p>
+                            <input type="button" value="Volver" class="btn" onclick="event.stopPropagation(); window.history.back();"/>
+                            <input type="button" value="Cinfirmar" class="btn btn-primary"/>
+                        </form>
+                </div>
+            </div>
+        </div>
 </body>
 </html>

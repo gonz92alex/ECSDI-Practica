@@ -103,12 +103,7 @@ def get_count():
     return mss_cnt
 
 
-@app.route("/")
-def pagina_princiapl():
-    return render_template('Initial_page.html')
-
-
-@app.route("/planificar", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def planificar():
     if request.method == 'GET':
         return render_template('planificar.html')
@@ -134,6 +129,9 @@ def planificar():
         gr.add((EnviarFormularioPlanificar, Ontologia.end, Literal(request.form['end'])))
         gr.add((EnviarFormularioPlanificar, Ontologia.correo, Literal(request.form['correo'])))
 
+        fechaIda = request.form['beginning']
+        fechaVuelta = request.form['end']
+
         grPlanAValidar = send_message(
             build_message(gr, perf=ACL.request, sender=UserClient.uri, receiver=Planificador.uri,
                           msgcnt=get_count(),
@@ -141,9 +139,29 @@ def planificar():
 
         logger.info("MESSAGE GENERATED!!!!!!!!!!!!!!!!!!!!!")
 
+        plan = {"fechaIda": fechaIda, "fechaVuelta": fechaVuelta}
 
+        for s, p, o in grPlanAValidar:
+            if p == Ontologia.tematica:
+                plan['tematica'] =  o
+            elif p == Ontologia.ciudad_destino:
+                plan['ciudad_destino'] =  o
+            elif p == Ontologia.ciudad_origen:
+                plan['ciudad_origen'] =  o
+            elif p == Ontologia.coste:
+                plan['coste'] =  o
+            elif p == Ontologia.correo:
+                plan['correo'] =  o
+            elif p == Ontologia.alojamiento:
+                plan['alojamiento'] =  o
+            elif p == Ontologia.vuelo_ida:
+                plan['vuelo_ida'] =  o
+            elif p == Ontologia.vuelo_vuelta:
+                plan['vuelo_vuelta'] =  o
+            elif p == Ontologia.actividades:
+                plan['actividades'] =  o
 
-        plan = {}
+        #print(plan[correo])
 
         return render_template('confirmar_y_pagar.html', plan=plan)
 
