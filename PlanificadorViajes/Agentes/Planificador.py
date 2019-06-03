@@ -21,9 +21,10 @@ import argparse
 from multiprocessing import Process, Queue
 import socket
 
+from amadeus import Client, ResponseError
 
 from rdflib import Namespace, Graph, logger, RDF, XSD, Literal
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 from PlanificadorViajes.AgentUtil.ACLMessages import register_agent, build_message, get_message_properties
 from PlanificadorViajes.AgentUtil.FlaskServer import shutdown_server
@@ -97,6 +98,28 @@ def get_count():
     messages_cnt += 1
     return messages_cnt
 
+def buscarVuelos(origen, destino):
+    amadeus = Client(
+        client_id='s2h4iHhivYGEkIyyVuzNAUxL7SHxVpSl',
+        client_secret='sUSz5eLygipHqv1C'
+    )
+    # date = dateToApi(request.args.get('date', None))
+    print(origen)
+    print(destino)
+    # print(date)
+    #return 'Quieres ir de '+origen+' a '+destino
+    try:
+        res = amadeus.shopping.flight_dates.get(
+            origin=origen,
+            destination=destino
+        )
+        return jsonify(res.result)
+    except ResponseError as error:
+        print('en error')
+        print(error.response.result)
+        return jsonify(error.response.result)
+
+
 def register_message():
     """
     Envia un mensaje de registro al servicio de registro
@@ -114,10 +137,10 @@ def register_message():
 
 @app.route("/comm")
 def comunicacion():
+    print("ENTROOOOOOOO!!!!!!!!!!!!!!!")
     global dsgraph
     global mss_cnt
     gr =  None
-    logger.info('Peticion de info recibida')
 
     # Extraemos el mensaje que nos envian
     mensaje = request.args['content']
@@ -130,49 +153,43 @@ def comunicacion():
 
     if msgdic is None:
         gr = build_message(Graph(), ACL['no_entendido'],sender=AgentePlanificador.uri, msgcnt=get_count())
-        logger.info("generado grafo")
+        print("msgdic is None !!!!!!!!!!!!!!!")
     else:
+        print("msgdic is not None !!!!!!!!!!!!!!!")
         performative = msgdic['performative']
 
         if performative != ACL.request:
+            print("No entendió el msg !!!!!!!!!!!!!!!")
             gr = build_message(Graph(), ACL['no_entendido'], sender=AgentePlanificador.uri, msgcnt=get_count())
 
         else:
-
-            logger.info("Entrando en segundo else \n\n")
+            print("Entendió el msg !!!!!!!!!!!!!!!")
 
             content = msgdic['content']
             accion = gm.value(subject=content, predicate=RDF.type)
+            print("accion: " + accion)
+            if accion == Ontologia.EnviarFormularioPlanificar:
+                print("Entro en EnviarFormularioPlanificar !!!!!!!!!!!!!!!")
+                
+                beginning = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.beginning)
+                tematica = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.tematica)
+                precio_max = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.precio_max)
+                ciudad_origen = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.ciudad_origen)
+                ciudad_destino = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.ciudad_destino)
+                end = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.end)
+                precio_min = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.precio_min)
+                #correo = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.correo)
 
-            if accion == Ontologia.Peticion_Buscar:
-                logger.info('Agente Planificador recibe una peticion de búsqueda, la tratamos')
-                restricciones = gm.objects(content, Ontologia.Restricciones)
-                restricciones_vec = {}
-                for restriccion in restricciones:
-                    if gm.value(subject=restriccion, predicate=RDF.type) == Ontologia.Restriccion_Marca:
-                        marca = gm.value(subject=restriccion, predicate=Ontologia.Marca)
-                        logger.info('MARCA: ' + marca)
-                        restricciones_vec['brand'] = marca
-                    elif gm.value(subject=restriccion, predicate=RDF.type) == Ontologia.Restriccion_modelo:
-                        modelo = gm.value(subject=restriccion, predicate=Ontologia.Modelo)
-                        logger. info('MODELO: ' + modelo)
-                        restricciones_vec['modelo'] = modelo
-                    elif gm.value(subject=restriccion, predicate=RDF.type) == Ontologia.Rango_precio:
-                        preu_max = gm.value(subject=restriccion, predicate=Ontologia.Precio_max)
-                        preu_min = gm.value(subject=restriccion, predicate=Ontologia.Precio_min)
-                        if preu_min:
-                            logger.info('Preu minim: ' + preu_min)
-                            restricciones_vec['min_price'] = preu_min.toPython()
-                        if preu_max:
-                            logger.info('Preu maxim: ' + preu_max)
-                            restricciones_vec['max_price'] = preu_max.toPython()
+                jsonVuelos = buscarVuelos(ciudad_origen, ciudad_destino)
+                print(jsonVuelos)
 
-                gr = findProducts(**restricciones_vec)
 
-                logger.info('Respondemos a la peticion')
+                # gr = findProducts(**restricciones_vec)
 
-                serialize = gr.serialize(format='xml')
-                return serialize, 200
+                # logger.info('Respondemos a la peticion')
+
+                # serialize = gr.serialize(format='xml')
+                # return serialize, 200
 
 
 def findFlights(origin=None, destination=None):
@@ -277,22 +294,3 @@ if __name__ == '__main__':
     ab1.join()
     print('The End')
 
-def buscar(origen, destino):
-    amadeus = Client(
-        client_id='s2h4iHhivYGEkIyyVuzNAUxL7SHxVpSl',
-        client_secret='sUSz5eLygipHqv1C'
-    )
-    date = dateToApi(request.args.get('date', None))
-    print(origen)
-    print(destino)
-    print(date)
-    #return 'Quieres ir de '+origen+' a '+destino
-    try:
-        res = amadeus.shopping.flight_dates.get(
-            origin=origen,
-            destination=destino
-        )
-        return jsonify(res.result)
-    except ResponseError as error:
-        print('en error')
-        return jsonify(error.response.result)

@@ -42,5 +42,5 @@ DSO = Namespace('http://www.semanticweb.org/directory-service-ontology#')
 AMO = Namespace('http://www.semanticweb.org/houcros/ontologies/2015/4/agentsMessages')
 
 # Own namespace
-Ontologia = Namespace("http://www.owl-ontologies.com/ECSDIAmazon.owl#")
+Ontologia = Namespace("http://www.owl-ontologies.com/ECSDI.owl#")
 
