@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Fri Dec 27 15:58:13 2013
@@ -84,7 +85,6 @@ DirectoryAgent = Agent('DirectoryAgent',
                        'http://%s:%d/Register' % (dhostname, dport),
                        'http://%s:%d/Stop' % (dhostname, dport))
 
-
 # Global triplestore graph
 dsgraph = Graph()
 
@@ -153,21 +153,16 @@ def comunicacion():
 
     if msgdic is None:
         gr = build_message(Graph(), ACL['no_entendido'],sender=AgentePlanificador.uri, msgcnt=get_count())
-        print("msgdic is None !!!!!!!!!!!!!!!")
     else:
-        print("msgdic is not None !!!!!!!!!!!!!!!")
         performative = msgdic['performative']
 
         if performative != ACL.request:
-            print("No entendió el msg !!!!!!!!!!!!!!!")
             gr = build_message(Graph(), ACL['no_entendido'], sender=AgentePlanificador.uri, msgcnt=get_count())
 
         else:
-            print("Entendió el msg !!!!!!!!!!!!!!!")
 
             content = msgdic['content']
             accion = gm.value(subject=content, predicate=RDF.type)
-            print("accion: " + accion)
             if accion == Ontologia.EnviarFormularioPlanificar:
                 print("Entro en EnviarFormularioPlanificar !!!!!!!!!!!!!!!")
                 
@@ -178,15 +173,24 @@ def comunicacion():
                 ciudad_destino = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.ciudad_destino)
                 end = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.end)
                 precio_min = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.precio_min)
-                #correo = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.correo)
+                correo = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.correo)
 
-                jsonVuelos = buscarVuelos(ciudad_origen, ciudad_destino)
-                print(jsonVuelos)
+                response = Graph()
+                EnviarViajePlanificado = Ontologia.EnviarViajePlanificado
+                response.add((EnviarViajePlanificado, Ontologia.tematica, Literal(tematica)))
+                response.add((EnviarViajePlanificado, Ontologia.ciudad_destino, Literal(ciudad_destino)))
+                response.add((EnviarViajePlanificado, Ontologia.ciudad_origen, Literal(ciudad_origen)))
+                response.add((EnviarViajePlanificado, Ontologia.coste, Literal(   "PENDIENTE POR GENERAR"   )))
+                response.add((EnviarViajePlanificado, Ontologia.correo, Literal(correo)))
+                response.add((EnviarViajePlanificado, Ontologia.alojamiento, Literal(   "PENDIENTE POR GENERAR"   )))
+                response.add((EnviarViajePlanificado, Ontologia.vuelo_ida, Literal(   "PENDIENTE POR GENERAR"   )))
+                response.add((EnviarViajePlanificado, Ontologia.vuelo_vuelta, Literal(   "PENDIENTE POR GENERAR"   )))
+                response.add((EnviarViajePlanificado, Ontologia.actividades, Literal(   "PENDIENTE POR GENERAR"   )))
 
+                #jsonVuelos = buscarVuelos(ciudad_origen, ciudad_destino)
+                #print(jsonVuelos)
 
-                # gr = findProducts(**restricciones_vec)
-
-                # logger.info('Respondemos a la peticion')
+                return gr.serialize(format="xml"), 200
 
                 # serialize = gr.serialize(format='xml')
                 # return serialize, 200

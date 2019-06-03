@@ -122,8 +122,6 @@ def planificar():
 
         gr = Graph()
 
-        logger.info("STEP1!!!!!!!!!!!!!!!!!!!")
-
         contentResult = Ontologia['Peticion_Buscar' + str(get_count())]
         EnviarFormularioPlanificar = Ontologia.EnviarFormularioPlanificar
         gr.add((contentResult, RDF.type, EnviarFormularioPlanificar))
@@ -134,10 +132,9 @@ def planificar():
         gr.add((EnviarFormularioPlanificar, Ontologia.precio_min, Literal(request.form['precio_min'])))
         gr.add((EnviarFormularioPlanificar, Ontologia.beginning, Literal(request.form['beginning'])))
         gr.add((EnviarFormularioPlanificar, Ontologia.end, Literal(request.form['end'])))
+        gr.add((EnviarFormularioPlanificar, Ontologia.correo, Literal(request.form['correo'])))
 
-        logger.info("STEP2!!!!!!!!!!!!!!!!!!!")
-
-        gr1 = send_message(
+        grPlanAValidar = send_message(
             build_message(gr, perf=ACL.request, sender=UserClient.uri, receiver=Planificador.uri,
                           msgcnt=get_count(),
                           content=contentResult), Planificador.address)
