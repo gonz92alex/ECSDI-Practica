@@ -69,7 +69,7 @@ dsgraph.bind('rdfs', RDFS)
 dsgraph.bind('foaf', FOAF)
 dsgraph.bind('dso', DSO)
 
-agn = Namespace("http://www.agentes.org#")
+agn = Namespace("http://www.agentes.org/#")
 DirectoryAgent = Agent('DirectoryAgent',
                        agn.Directory,
                        'http://%s:%d/Register' % (hostname, port),
@@ -137,7 +137,7 @@ def register():
         rsearch = dsgraph.triples((None, DSO.AgentType, agn_type))
         if rsearch is not None:
             # logger.info("RSEARCH = " + rsearch + "\n\n") #BORRAR!
-            agn_uri = rsearch.next()[0]
+            agn_uri = next(rsearch)[0]
             #logger.info("peta aqui?\n\n") #BORRAR!
             agn_add = dsgraph.value(subject=agn_uri, predicate=DSO.Address)
             agn_name = dsgraph.value(subject=agn_uri, predicate=FOAF.name)

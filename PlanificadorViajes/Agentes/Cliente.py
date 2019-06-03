@@ -63,7 +63,7 @@ else:
 app = Flask(__name__, template_folder='../templates')
 
 # Configuration constants and variables
-agn = Namespace("http://www.agentes.org#")
+agn = Namespace("http://www.agentes.org/#")
 
 # Contador de mensajes
 mss_cnt = 0
@@ -116,7 +116,7 @@ def planificar():
 
         # Generar: FormularioPlanCliente        
         
-        contentResult = Ontologia['Peticion_Planificar_' + str(get_count())]
+        contentResult = Ontologia['Peticion_Buscar' + str(get_count())]
         gr = Graph()
         gr.add((contentResult, RDF.type, Ontologia.Peticion_Planificar))
         Buscador = get_agent_info(agn.AgenteBuscador, DirectoryAgent, UserClient, get_count())

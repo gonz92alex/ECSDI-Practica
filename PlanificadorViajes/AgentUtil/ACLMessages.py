@@ -19,7 +19,7 @@ __author__ = 'javier'
 
 
 
-agn = Namespace("http://www.agentes.org#")
+agn = Namespace("http://www.agentes.org/#")
 
 
 

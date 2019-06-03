@@ -65,7 +65,7 @@ else:
     dhostname = args.dhost
 
 
-agn = Namespace("http://www.agentes.org#")
+agn = Namespace("http://www.agentes.org/#")
 
 # Contador de mensajes
 messages_cnt = 0
@@ -141,7 +141,7 @@ def comunicacion():
             content = msgdic['content']
             accion = gm.value(subject=content, predicate=RDF.type)
 
-            if accion == Ontologia.Peticion_Busqueda:
+            if accion == Ontologia.Peticion_Buscar:
                 logger.info('Agente Buscador recibe una peticion de búsqueda, la tratamos')
                 restricciones = gm.objects(content, Ontologia.Restricciones)
                 restricciones_vec = {}
