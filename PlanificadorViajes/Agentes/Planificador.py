@@ -130,6 +130,7 @@ def comunicacion():
 
     if msgdic is None:
         gr = build_message(Graph(), ACL['no_entendido'],sender=AgentePlanificador.uri, msgcnt=get_count())
+        logger.info("generado grafo")
     else:
         performative = msgdic['performative']
 
@@ -137,6 +138,8 @@ def comunicacion():
             gr = build_message(Graph(), ACL['no_entendido'], sender=AgentePlanificador.uri, msgcnt=get_count())
 
         else:
+
+            logger.info("Entrando en segundo else \n\n")
 
             content = msgdic['content']
             accion = gm.value(subject=content, predicate=RDF.type)

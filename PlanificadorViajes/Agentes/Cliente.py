@@ -114,19 +114,19 @@ def planificar():
         return render_template('planificar.html')
     elif request.method == 'POST':
 
-        # Generar: FormularioPlanCliente        
+        # Generar: EnviarFormularioPlanificar        
         
         Planificador = get_agent_info(agn.AgentePlanificador, DirectoryAgent, UserClient, get_count())
 
         logger.info("Agente Planificador encontrado")
 
-        contentResult = Ontologia['Peticion_Buscar' + str(get_count())]
         gr = Graph()
-        gr.add((contentResult, RDF.type, Ontologia.EnviarFormularioPlanificar))
 
         logger.info("STEP1!!!!!!!!!!!!!!!!!!!")
 
-        EnviarFormularioPlanificar = Ontologia.FormularioPlanCliente
+        contentResult = Ontologia['Peticion_Buscar' + str(get_count())]
+        EnviarFormularioPlanificar = Ontologia.EnviarFormularioPlanificar
+        gr.add((contentResult, RDF.type, EnviarFormularioPlanificar))
         gr.add((EnviarFormularioPlanificar, Ontologia.tematica, Literal(request.form['tematica'])))
         gr.add((EnviarFormularioPlanificar, Ontologia.ciudad_destino, Literal(request.form['ciudad_destino'])))
         gr.add((EnviarFormularioPlanificar, Ontologia.ciudad_origen, Literal(request.form['ciudad_origen'])))
