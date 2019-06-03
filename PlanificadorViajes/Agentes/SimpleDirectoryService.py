@@ -111,7 +111,7 @@ def register():
         dsgraph.add((agn_uri, DSO.Address, agn_add))
         dsgraph.add((agn_uri, DSO.AgentType, agn_type))
 
-        logger.info('Registrado agente: ' + agn_name + ' - tipus:' + agn_type)
+        logger.info('Registrado agente: ' + agn_name + ' - tipus:' + agn_type + " - uri:" + agn_uri)
         # Generamos un mensaje de respuesta
         return build_message(Graph(),
                              ACL.confirm,
@@ -133,9 +133,12 @@ def register():
         logger.info('Peticion de busqueda')
 
         agn_type = gm.value(subject=content, predicate=DSO.AgentType)
+        #logger.info("AGN_TYPE = " + agn_type + "\n\n") #BORRAR!
         rsearch = dsgraph.triples((None, DSO.AgentType, agn_type))
         if rsearch is not None:
+            # logger.info("RSEARCH = " + rsearch + "\n\n") #BORRAR!
             agn_uri = rsearch.next()[0]
+            #logger.info("peta aqui?\n\n") #BORRAR!
             agn_add = dsgraph.value(subject=agn_uri, predicate=DSO.Address)
             agn_name = dsgraph.value(subject=agn_uri, predicate=FOAF.name)
             gr = Graph()

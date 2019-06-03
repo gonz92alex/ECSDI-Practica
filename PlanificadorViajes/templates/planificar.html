@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        label {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Planifica tu Viaje!</h2>
+    <form method="post">
+        <label>Ciudad de destino:</label>
+        <input type="text" name="ciudad_destino" style="display: block"/>
+        <label >Ciudad de origen:</label>
+        <input type="text" name="ciudad_origen" style="display: block"/>
+        <label>From:</label>
+        <input type="date" name="beginning" style="display: block"/>
+        <label>To:</label>
+        <input type="date" name="end" style="display: block"/>
+        <label>Precio máximo (€):</label>
+        <input type="number" name="precio_max" value="1000" style="display: block"/>
+        <label>Precio mínimo (€):</label>
+        <input type="number" name="precio_min" value="0" style="display: block"/>
+        <label>Temática:</label>
+        <select name="tematica" style="display: block">
+                <option value="ludico">Lúdico</option>
+                <option value="cultural">Cultural</option>
+                <option value="festivo">Festivo</option>
+        </select>
+    <input type="submit" value="Buscar Viaje!" style="margin-top: 30px"/>
+    </form>
+</body>
+</html>

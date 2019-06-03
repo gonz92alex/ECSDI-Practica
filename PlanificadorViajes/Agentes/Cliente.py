@@ -2,7 +2,7 @@
 """
 filename: UserPersonalAgent
 Agent que implementa la interacció amb l'usuari
-@author: casassg
+@author: ecsdi
 """
 import random
 
@@ -20,7 +20,7 @@ from PlanificadorViajes.AgentUtil.Logging import config_logger
 from PlanificadorViajes.AgentUtil.OntologyNamespaces import ACL
 from PlanificadorViajes.AgentUtil.OntologyNamespaces import Ontologia
 
-__author__ = 'amazadonde'
+__author__ = 'ecsdi'
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()
@@ -108,6 +108,66 @@ def pagina_princiapl():
     return render_template('Initial_page.html')
 
 
+@app.route("/planificar", methods=['GET', 'POST'])
+def planificar():
+    if request.method == 'GET':
+        return render_template('planificar.html')
+    elif request.method == 'POST':
+
+        # Generar: FormularioPlanCliente        
+        
+        contentResult = Ontologia['Peticion_Planificar_' + str(get_count())]
+        gr = Graph()
+        gr.add((contentResult, RDF.type, Ontologia.Peticion_Planificar))
+        Buscador = get_agent_info(agn.AgenteBuscador, DirectoryAgent, UserClient, get_count())
+
+        FormularioPlanCliente = Ontologia.FormularioPlanCliente
+        gr.add((FormularioPlanCliente, Ontologia.tematica, Literal(request.form['tematica'])))
+        gr.add((FormularioPlanCliente, Ontologia.ciudad_destino, Literal(request.form['ciudad_destino'])))
+        gr.add((FormularioPlanCliente, Ontologia.ciudad_origen, Literal(request.form['ciudad_origen'])))
+        gr.add((FormularioPlanCliente, Ontologia.precio_max, Literal(request.form['precio_max'])))
+        gr.add((FormularioPlanCliente, Ontologia.precio_min, Literal(request.form['precio_min'])))
+        gr.add((FormularioPlanCliente, Ontologia.beginning, Literal(request.form['beginning'])))
+        gr.add((FormularioPlanCliente, Ontologia.end, Literal(request.form['end'])))
+
+        for s, p, o in gr:
+            logger.info(s)
+            logger.info(p)
+            logger.info(o)
+
+        gr1 = send_message(
+            build_message(gr, perf=ACL.request, sender=UserClient.uri, receiver=Buscador.uri,
+                          msgcnt=get_count(),
+                          content=contentResult), Buscador.address)
+
+        logger.info("MESSAGE GENERATED!!!!!!!!!!!!!!!!!!!!!")
+
+
+
+        plan = {}
+
+        return render_template('confirmar_y_pagar.html', plan=plan)
+
+
+
+
+
+
+#Peticion_Busqueda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route("/valoraciones" , methods=['GET', 'POST'])
 def browser_valorar():
@@ -116,7 +176,7 @@ def browser_valorar():
     if request.method == 'GET':
         product_list3 = []
         contentResult = Ontologia['Peticion_Valoracion' + str(get_count())]
-        gr = Graph();
+        gr = Graph()
         gr.add((contentResult, RDF.type, Ontologia.Peticion_Valorados))
         Valorador = get_agent_info(agn.AgenteValorador, DirectoryAgent, UserClient, get_count())
 
@@ -238,7 +298,7 @@ def browser_cerca():
     if request.method == 'GET':
 
         contentResult = Ontologia['Peticion_Recomendacion' + str(get_count())]
-        gr = Graph();
+        gr = Graph()
         gr.add((contentResult, RDF.type, Ontologia.Peticion_Recomendados))
         Recomendador = get_agent_info(agn.AgenteRecomendador, DirectoryAgent, UserClient, get_count())
 
@@ -496,6 +556,7 @@ def agentbehavior1():
     Un comportamiento del agente
     :return:
     """
+    logger.info("INICIANDO CLIENTE")
 
 
 def get_all_sells():
