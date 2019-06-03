@@ -147,18 +147,17 @@ def buscarHotel(ciudad, fecha, end):
         res = amadeus.shopping.hotel_offers.get(cityCode=ciudad)
 
         hoteles = res.result['data']
-        print('HOLA')
-        print(hoteles)
     except ResponseError as error:
         return error.response.result
-    hotels = []
-    print(hoteles)
     precioMin = 0
-    hotelMin = {}
+    hotelMin = None
     for h in hoteles:
-        if float(h['hotel']['offers'][0]['room']['price']['total']) >= precioMin:
-            precioMin = float(h['hotel']['offers'][0]['room']['price']['total'])
-            hotelMin = h
+        try:
+            if float(h['offers'][0]['price']['total']) >= precioMin:
+                precioMin = float(h['offers'][0]['price']['total'])
+                hotelMin = h
+        except:
+            pass
     return hotelMin
 
 
@@ -217,10 +216,10 @@ def comunicacion():
 
                 viaje = buscarVuelos(ciudad_origen, ciudad_destino, beginning, end, precio_min, precio_max)
                 hotel = buscarHotel(ciudad_destino, beginning, end)
-                print(viaje)
-                if viaje is not None:
+                if viaje is not None and hotel is not None:
                     response = Graph()
-                    precio = float(hotel['hotel']['offers'][0]['room']['price']['total']) + float(viaje['price']['total'])
+                    precio = float(viaje['price']['total'])
+                    precio += float(hotel['offers'][0]['price']['total'])
                     EnviarViajePlanificado = Ontologia.EnviarViajePlanificado
                     response.add((EnviarViajePlanificado, Ontologia.tematica, Literal(tematica)))
                     response.add((EnviarViajePlanificado, Ontologia.ciudad_destino, Literal(ciudad_destino)))
@@ -229,7 +228,7 @@ def comunicacion():
                     response.add((EnviarViajePlanificado, Ontologia.vuelo, Literal(viaje['links']['flightOffers'])))
                     response.add((EnviarViajePlanificado, Ontologia.correo, Literal(correo)))
                     response.add((EnviarViajePlanificado, Ontologia.nomHotel, Literal(hotel['hotel']['name'])))
-                    response.add((EnviarViajePlanificado, Ontologia.linkHotel, Literal(hotel['hotel']['self'])))
+                    response.add((EnviarViajePlanificado, Ontologia.linkHotel, Literal(hotel['self'])))
 
                 #jsonVuelos = buscarVuelos(ciudad_origen, ciudad_destino)
                 #print(jsonVuelos)
