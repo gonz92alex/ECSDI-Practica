@@ -131,35 +131,40 @@ def planificar():
         fechaIda = request.form['beginning']
         fechaVuelta = request.form['end']
 
-        grPlanAValidar = send_message(
-            build_message(gr, perf=ACL.request, sender=UserClient.uri, receiver=Planificador.uri,
-                          msgcnt=get_count(),
-                          content=contentResult), Planificador.address)
+        try:
 
-        plan = {"fechaIda": fechaIda, "fechaVuelta": fechaVuelta}
+            grPlanAValidar = send_message(
+                build_message(gr, perf=ACL.request, sender=UserClient.uri, receiver=Planificador.uri,
+                            msgcnt=get_count(),
+                            content=contentResult), Planificador.address)
 
-        for s, p, o in grPlanAValidar:
-            if p == Ontologia.tematica:
-                plan['tematica'] =  o
-            elif p == Ontologia.ciudad_destino:
-                plan['ciudad_destino'] =  o
-            elif p == Ontologia.ciudad_origen:
-                plan['ciudad_origen'] =  o
-            elif p == Ontologia.coste:
-                plan['coste'] =  o
-            elif p == Ontologia.correo:
-                plan['correo'] =  o
-            elif p == Ontologia.alojamiento:
-                plan['alojamiento'] =  o
-            elif p == Ontologia.vuelo_ida:
-                plan['vuelo'] =  o
-            elif p == Ontologia.actividades:
-                plan['actividades'] =  o
-            elif p == Ontologia.vuelo:
-                plan["vuelo"] = urllib.parse.unquote(o)
+            plan = {"fechaIda": fechaIda, "fechaVuelta": fechaVuelta}
 
-        #plan["vuelo"] = "https://www.google.com/"
-        return render_template('confirmar_y_pagar.html', plan=plan)
+            for s, p, o in grPlanAValidar:
+                if p == Ontologia.tematica:
+                    plan['tematica'] =  o
+                elif p == Ontologia.ciudad_destino:
+                    plan['ciudad_destino'] =  o
+                elif p == Ontologia.ciudad_origen:
+                    plan['ciudad_origen'] =  o
+                elif p == Ontologia.coste:
+                    plan['coste'] =  o
+                elif p == Ontologia.correo:
+                    plan['correo'] =  o
+                elif p == Ontologia.alojamiento:
+                    plan['alojamiento'] =  o
+                elif p == Ontologia.vuelo_ida:
+                    plan['vuelo'] =  o
+                elif p == Ontologia.actividades:
+                    plan['actividades'] =  o
+                elif p == Ontologia.vuelo:
+                    plan["vuelo"] = urllib.parse.unquote(o)
+
+            #plan["vuelo"] = "https://www.google.com/"
+            return render_template('confirmar_y_pagar.html', plan=plan)
+
+        except:
+            return render_template('error_planificar.html')
 
 
 @app.route("/Stop")
