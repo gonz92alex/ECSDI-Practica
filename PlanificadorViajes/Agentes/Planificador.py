@@ -31,7 +31,7 @@ from PlanificadorViajes.AgentUtil.Agent import Agent
 from PlanificadorViajes.AgentUtil.OntologyNamespaces import ACL
 from PlanificadorViajes.AgentUtil.OntologyNamespaces import Ontologia
 
-__author__ = 'Amazon V2'
+__author__ = 'ecsdi'
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--open', help="Define si el servidor est abierto al exterior o no", action='store_true',
@@ -268,7 +268,7 @@ if __name__ == '__main__':
     ab1.start()
 
     # Ponemos en marcha el servidor
-    app.run(host=hostname, port=port)
+    app.run(host=hostname, port=port, debug=True)
 
     # Esperamos a que acaben los behaviors
     ab1.join()

@@ -111,7 +111,7 @@ def register():
         dsgraph.add((agn_uri, DSO.Address, agn_add))
         dsgraph.add((agn_uri, DSO.AgentType, agn_type))
 
-        logger.info('Registrado agente: ' + agn_name + ' - tipus:' + agn_type + " - uri:" + agn_uri)
+        logger.info('Registrado agente: ' + agn_name + ' - tipus:' + agn_type)
         # Generamos un mensaje de respuesta
         return build_message(Graph(),
                              ACL.confirm,

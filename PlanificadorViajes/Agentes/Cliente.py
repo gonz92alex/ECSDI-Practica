@@ -121,14 +121,16 @@ def planificar():
         gr.add((contentResult, RDF.type, Ontologia.Peticion_Planificar))
         Buscador = get_agent_info(agn.AgenteBuscador, DirectoryAgent, UserClient, get_count())
 
-        FormularioPlanCliente = Ontologia.FormularioPlanCliente
-        gr.add((FormularioPlanCliente, Ontologia.tematica, Literal(request.form['tematica'])))
-        gr.add((FormularioPlanCliente, Ontologia.ciudad_destino, Literal(request.form['ciudad_destino'])))
-        gr.add((FormularioPlanCliente, Ontologia.ciudad_origen, Literal(request.form['ciudad_origen'])))
-        gr.add((FormularioPlanCliente, Ontologia.precio_max, Literal(request.form['precio_max'])))
-        gr.add((FormularioPlanCliente, Ontologia.precio_min, Literal(request.form['precio_min'])))
-        gr.add((FormularioPlanCliente, Ontologia.beginning, Literal(request.form['beginning'])))
-        gr.add((FormularioPlanCliente, Ontologia.end, Literal(request.form['end'])))
+        # logger.info("LLEGA HASTA AQUI!\n\n\n") #no llega
+
+        # FormularioPlanCliente = Ontologia.FormularioPlanCliente
+        # gr.add((FormularioPlanCliente, Ontologia.tematica, Literal(request.form['tematica'])))
+        # gr.add((FormularioPlanCliente, Ontologia.ciudad_destino, Literal(request.form['ciudad_destino'])))
+        # gr.add((FormularioPlanCliente, Ontologia.ciudad_origen, Literal(request.form['ciudad_origen'])))
+        # gr.add((FormularioPlanCliente, Ontologia.precio_max, Literal(request.form['precio_max'])))
+        # gr.add((FormularioPlanCliente, Ontologia.precio_min, Literal(request.form['precio_min'])))
+        # gr.add((FormularioPlanCliente, Ontologia.beginning, Literal(request.form['beginning'])))
+        # gr.add((FormularioPlanCliente, Ontologia.end, Literal(request.form['end'])))
 
         for s, p, o in gr:
             logger.info(s)
