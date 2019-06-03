@@ -98,27 +98,42 @@ def get_count():
     messages_cnt += 1
     return messages_cnt
 
-def buscarVuelos(origen, destino):
+def buscarVuelos(origen, destino, date, end, minP, maxP):
     amadeus = Client(
         client_id='s2h4iHhivYGEkIyyVuzNAUxL7SHxVpSl',
         client_secret='sUSz5eLygipHqv1C'
     )
     # date = dateToApi(request.args.get('date', None))
-    print(origen)
-    print(destino)
     # print(date)
     #return 'Quieres ir de '+origen+' a '+destino
     try:
         res = amadeus.shopping.flight_dates.get(
             origin=origen,
-            destination=destino
+            destination=destino, departureDate=date
         )
-        return jsonify(res.result)
-    except ResponseError as error:
-        print('en error')
-        print(error.response.result)
-        return jsonify(error.response.result)
 
+        vuelos = res.result['data']
+
+    except ResponseError as error:
+        return error.response.result
+    resultados = []
+    for v in vuelos:
+        pasta = float(v['price']['total'])
+        if v['returnDate'].strip() == str(end).strip()\
+                and pasta <= float(maxP) and pasta >= float(minP):
+            resultados.append(v)
+    if len(resultados) == 1:
+        return resultados[0]
+    elif len(resultados) == 0:
+        return None
+    else:
+        precioMin = 0
+        vueloMin = {}
+        for v in resultados:
+            if float(v['price']['total']) >= precioMin:
+                precioMin =  float(v['price']['total'])
+                vueloMin = v
+        return vueloMin
 
 def register_message():
     """
@@ -137,7 +152,6 @@ def register_message():
 
 @app.route("/comm")
 def comunicacion():
-    print("ENTROOOOOOOO!!!!!!!!!!!!!!!")
     global dsgraph
     global mss_cnt
     gr =  None
@@ -164,7 +178,6 @@ def comunicacion():
             content = msgdic['content']
             accion = gm.value(subject=content, predicate=RDF.type)
             if accion == Ontologia.EnviarFormularioPlanificar:
-                print("Entro en EnviarFormularioPlanificar !!!!!!!!!!!!!!!")
                 
                 beginning = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.beginning)
                 tematica = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.tematica)
@@ -175,84 +188,28 @@ def comunicacion():
                 precio_min = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.precio_min)
                 correo = gm.value(subject=Ontologia.EnviarFormularioPlanificar, predicate=Ontologia.correo)
 
-                response = Graph()
-                EnviarViajePlanificado = Ontologia.EnviarViajePlanificado
-                response.add((EnviarViajePlanificado, Ontologia.tematica, Literal(tematica)))
-                response.add((EnviarViajePlanificado, Ontologia.ciudad_destino, Literal(ciudad_destino)))
-                response.add((EnviarViajePlanificado, Ontologia.ciudad_origen, Literal(ciudad_origen)))
-                response.add((EnviarViajePlanificado, Ontologia.coste, Literal(   "PENDIENTE POR GENERAR"   )))
-                response.add((EnviarViajePlanificado, Ontologia.correo, Literal(correo)))
-                response.add((EnviarViajePlanificado, Ontologia.alojamiento, Literal(   "PENDIENTE POR GENERAR"   )))
-                response.add((EnviarViajePlanificado, Ontologia.vuelo_ida, Literal(   "PENDIENTE POR GENERAR"   )))
-                response.add((EnviarViajePlanificado, Ontologia.vuelo_vuelta, Literal(   "PENDIENTE POR GENERAR"   )))
-                response.add((EnviarViajePlanificado, Ontologia.actividades, Literal(   "PENDIENTE POR GENERAR"   )))
+                viaje = buscarVuelos(ciudad_origen, ciudad_destino, beginning, end, precio_min, precio_max)
+                print(viaje)
+                if viaje is not None:
+                    response = Graph()
+                    EnviarViajePlanificado = Ontologia.EnviarViajePlanificado
+                    response.add((EnviarViajePlanificado, Ontologia.tematica, Literal(tematica)))
+                    response.add((EnviarViajePlanificado, Ontologia.ciudad_destino, Literal(ciudad_destino)))
+                    response.add((EnviarViajePlanificado, Ontologia.ciudad_origen, Literal(ciudad_origen)))
+                    response.add((EnviarViajePlanificado, Ontologia.coste, Literal(viaje['price']['total'])))
+                    response.add((EnviarViajePlanificado, Ontologia.correo, Literal(correo)))
+                    response.add((EnviarViajePlanificado, Ontologia.alojamiento, Literal(   "PENDIENTE POR GENERAR"   )))
+                    response.add((EnviarViajePlanificado, Ontologia.actividades, Literal(   "PENDIENTE POR GENERAR"   )))
 
                 #jsonVuelos = buscarVuelos(ciudad_origen, ciudad_destino)
                 #print(jsonVuelos)
 
-                return response.serialize(format="xml"), 200
+                    return response.serialize(format="xml"), 200
+                else:
+                    return '', 404
 
                 # serialize = gr.serialize(format='xml')
                 # return serialize, 200
-
-
-def findFlights(origin=None, destination=None):
-    graph = Graph()
-    ontologyFile = open('../Datos/productos')
-    graph.parse(ontologyFile, format='turtle')
-
-    first = second = 0
-    query = """
-        prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        prefix xsd:<http://www.w3.org/2001/XMLSchema#>
-        prefix default:<http://www.owl-ontologies.com/ECSDIAmazon.owl#>
-        prefix owl:<http://www.w3.org/2002/07/owl#>
-        SELECT DISTINCT ?producto ?nombre ?marca ?modelo ?precio ?peso
-        where {
-            { ?producto rdf:type default:Producto } UNION { ?producto rdf:type default:Producto_externo } .
-            ?producto default:Nombre ?nombre .
-            ?producto default:Marca ?marca .
-            ?producto default:Modelo ?modelo .
-            ?producto default:Precio ?precio .
-            ?producto default:Peso ?peso .
-            FILTER("""
-
-    if modelo is not None:
-        query += """str(?modelo) = '""" + modelo + """'"""
-        first = 1
-
-    if brand is not None:
-        if first == 1:
-            query += """ && """
-        query += """str(?marca) = '""" + brand + """'"""
-        second = 1
-
-    if first == 1 or second == 1:
-        query += """ && """
-    query += """?precio >= """ + str(min_price) + """ &&
-                ?precio <= """ + str(max_price) + """  )}
-                order by asc(UCASE(str(?nombre)))"""
-
-    graph_query = graph.query(query)
-    result = Graph()
-    result.bind('ECSDI', Ontologia)
-    product_count = 0
-    for row in graph_query:
-        nombre = row.nombre
-        modelo = row.modelo
-        marca = row.marca
-        precio = row.precio
-        peso = row.peso
-        logger.debug(nombre, marca, modelo, precio)
-        subject = row.producto
-        product_count += 1
-        result.add((subject, RDF.type, Ontologia.Producte))
-        result.add((subject, Ontologia.Marca, Literal(marca, datatype=XSD.string)))
-        result.add((subject, Ontologia.Modelo, Literal(modelo, datatype=XSD.string)))
-        result.add((subject, Ontologia.Precio, Literal(precio, datatype=XSD.float)))
-        result.add((subject, Ontologia.Peso, Literal(peso, datatype=XSD.float)))
-        result.add((subject, Ontologia.Nombre, Literal(nombre, datatype=XSD.string)))
-    return result
 
 
 

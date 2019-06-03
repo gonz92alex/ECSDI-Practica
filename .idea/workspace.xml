@@ -3,25 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c9920924-3ff8-45e2-a879-9edf20d147ba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Comprobador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Comprobador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Pagador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Pagador.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Recomendador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Recomendador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/SimpleDirectoryService.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/SimpleDirectoryService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Valorador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/Valorador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteDevoluciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteDevoluciones.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteNegociador.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteNegociador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteRecomendaciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteRecomendaciones.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/ExternalTransportDirectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/ExternalTransportDirectory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/ecsdi_modules/ACLMessages.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/AgentUtil/ACLMessages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/ecsdi_modules/Agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/AgentUtil/Agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/ecsdi_modules/ExternalTransportAgent.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/ecsdi_modules/FlaskServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/AgentUtil/FlaskServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/ecsdi_modules/Logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/AgentUtil/Logging.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/ecsdi_modules/OntologyNamespaces.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/AgentUtil/OntologyNamespaces.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/ecsdi_modules/SPARQLPoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/AgentUtil/SPARQLPoints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlanificadorViajes/ecsdi_modules/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlanificadorViajes/AgentUtil/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,20 +12,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PlanificadorViajes/AgentUtil/OntologyNamespaces.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="44" column="9" selection-start-line="44" selection-end-line="44" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
+            <state relative-caret-position="340">
               <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
             </state>
           </provider>
@@ -52,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Comprobador.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
+            <state relative-caret-position="510">
               <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
             </state>
           </provider>
@@ -61,17 +34,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Pagador.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="493">
               <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+            <state relative-caret-position="459">
+              <caret line="214" lean-forward="true" selection-start-line="214" selection-end-line="214" />
+              <folding>
+                <element signature="e#373#410#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,7 +55,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Recomendador.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
+            <state relative-caret-position="527">
               <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
             </state>
           </provider>
@@ -97,16 +73,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/SimpleDirectoryService.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
+            <state relative-caret-position="544">
               <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Valorador.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
+            <state relative-caret-position="425">
               <caret line="39" column="51" selection-start-line="39" selection-start-column="51" selection-end-line="39" selection-end-column="51" />
               <folding>
                 <element signature="e#372#409#0" expanded="true" />
@@ -118,7 +94,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlanificadorViajes/AgentUtil/ACLMessages.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1949">
+            <state relative-caret-position="255">
               <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#140#155#0" expanded="true" />
@@ -155,10 +131,10 @@
         <option value="$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py" />
         <option value="$PROJECT_DIR$/PlanificadorViajes/Agentes/Comprobador.py" />
         <option value="$PROJECT_DIR$/PlanificadorViajes/Agentes/Pagador.py" />
-        <option value="$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py" />
         <option value="$PROJECT_DIR$/PlanificadorViajes/Agentes/Recomendador.py" />
         <option value="$PROJECT_DIR$/PlanificadorViajes/Agentes/SimpleDirectoryService.py" />
         <option value="$PROJECT_DIR$/PlanificadorViajes/Agentes/Valorador.py" />
+        <option value="$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py" />
       </list>
     </option>
   </component>
@@ -174,6 +150,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,7 +173,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -242,7 +218,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="--host 192.168.1.33 --dhost 192.168.1.33" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -308,7 +284,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="PlanificadorViajes.Agentes.SimpleDirectoryService" />
-      <option name="PARAMETERS" value="--open" />
+      <option name="PARAMETERS" value="--host 192.168.1.33" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="true" />
@@ -325,8 +301,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Cliente" />
-        <item itemvalue="Python.Recomendador" />
         <item itemvalue="Python.SimpleDirectoryService" />
+        <item itemvalue="Python.Recomendador" />
         <item itemvalue="Python.Comprobador" />
       </list>
     </recent_temporary>
@@ -342,18 +318,19 @@
       <option name="presentableId" value="Default" />
       <updated>1559486070544</updated>
       <workItem from="1559486071959" duration="8139000" />
+      <workItem from="1559591320916" duration="4512000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8139000" />
+    <option name="totallyTimeSpent" value="12979000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24271844" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.25080907" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" />
@@ -363,7 +340,7 @@
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.3298731" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.3298731" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.3298731" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
@@ -392,10 +369,10 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ECSDI_SKL$SimpleDirectoryService.coverage" NAME="SimpleDirectoryService Coverage Results" MODIFIED="1559491910484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PlanificadorViajes/Agentes" />
+    <SUITE FILE_PATH="coverage/ECSDI_SKL$SimpleDirectoryService.coverage" NAME="SimpleDirectoryService Coverage Results" MODIFIED="1559592045917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PlanificadorViajes/Agentes" />
     <SUITE FILE_PATH="coverage/ECSDI_SKL$Recomendador.coverage" NAME="Recomendador Coverage Results" MODIFIED="1559492078746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PlanificadorViajes/Agentes" />
     <SUITE FILE_PATH="coverage/ECSDI_SKL$Comprobador.coverage" NAME="Comprobador Coverage Results" MODIFIED="1559491871036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PlanificadorViajes/Agentes" />
-    <SUITE FILE_PATH="coverage/ECSDI_SKL$Cliente.coverage" NAME="Cliente Coverage Results" MODIFIED="1559492251630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PlanificadorViajes/Agentes" />
+    <SUITE FILE_PATH="coverage/ECSDI_SKL$Cliente.coverage" NAME="Cliente Coverage Results" MODIFIED="1559592069616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PlanificadorViajes/Agentes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/requirements.txt">
@@ -443,13 +420,7 @@
     <entry file="file://$PROJECT_DIR$/PlanificadorViajes/templates/info.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/templates/Initial_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="39" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/templates/Initial_page.html" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -457,13 +428,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/utils/OntologyNamespaces1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/utils/OntologyNamespaces1.py" />
     <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/trash/AgenteRecomendaciones.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -497,16 +462,7 @@
         <state relative-caret-position="-657" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/ecsdi_modules/ExternalTransportAgent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/ecsdi_modules/ExternalTransportAgent.py" />
     <entry file="file://$PROJECT_DIR$/PlanificadorViajes/AgentUtil/FlaskServer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -514,20 +470,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/AgentUtil/ACLMessages.py">
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/AgentUtil/OntologyNamespaces.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1949">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#140#155#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="748">
+          <caret line="44" column="9" selection-start-line="44" selection-end-line="44" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/AgentUtil/OntologyNamespaces.py">
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="44" column="9" selection-start-line="44" selection-end-line="44" selection-end-column="9" />
+        <state relative-caret-position="340">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Comprobador.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Pagador.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Recomendador.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -538,54 +512,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Cliente.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Comprobador.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Pagador.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Recomendador.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/SimpleDirectoryService.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
+        <state relative-caret-position="544">
           <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Valorador.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
+        <state relative-caret-position="425">
           <caret line="39" column="51" selection-start-line="39" selection-start-column="51" selection-end-line="39" selection-end-column="51" />
           <folding>
             <element signature="e#372#409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/AgentUtil/ACLMessages.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#140#155#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/rdflib/graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="661" column="8" selection-start-line="661" selection-start-column="8" selection-end-line="661" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlanificadorViajes/Agentes/Planificador.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="214" lean-forward="true" selection-start-line="214" selection-end-line="214" />
+          <folding>
+            <element signature="e#373#410#0" expanded="true" />
           </folding>
         </state>
       </provider>
