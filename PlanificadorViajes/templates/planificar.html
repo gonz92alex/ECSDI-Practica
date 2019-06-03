@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
     <style>
         label {
@@ -12,29 +13,51 @@
     </style>
 </head>
 <body>
-    <h2>Planifica tu Viaje!</h2>
-    <form method="post">
-        <label>Email:</label>
-        <input type="text" name="correo" style="display: block"/>
-        <label>Ciudad de destino:</label>
-        <input type="text" name="ciudad_destino" style="display: block"/>
-        <label >Ciudad de origen:</label>
-        <input type="text" name="ciudad_origen" style="display: block"/>
-        <label>From:</label>
-        <input type="date" name="beginning" style="display: block"/>
-        <label>To:</label>
-        <input type="date" name="end" style="display: block"/>
-        <label>Precio máximo (€):</label>
-        <input type="number" name="precio_max" value="1000" style="display: block"/>
-        <label>Precio mínimo (€):</label>
-        <input type="number" name="precio_min" value="0" style="display: block"/>
-        <label>Temática:</label>
-        <select name="tematica" style="display: block">
-                <option value="ludico">Lúdico</option>
-                <option value="cultural">Cultural</option>
-                <option value="festivo">Festivo</option>
-        </select>
-    <input type="submit" value="Buscar Viaje!" style="margin-top: 30px"/>
-    </form>
+    <div class="container py-5 w-75">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Planifica tu Viaje!</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                    <label>Email:</label>
+                    <input class="form-control" type="email" name="correo" placeholder="example@domain.com"/>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>Ciudad de destino:</label>
+                            <input class="form-control" type="text" name="ciudad_destino"/>
+                        </div>
+                        <div class="col">
+                            <label >Ciudad de origen:</label>
+                            <input class="form-control" type="text" name="ciudad_origen"/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>From:</label>
+                            <input type="date" name="beginning" class="form-control"/>
+                        </div>
+                        <div class="col">
+                            <label>To:</label>
+                            <input type="date" name="end"class="form-control" />
+                        </div>
+                    </div>
+                    <label>Precio máximo (€):</label>
+                    <input class="form-control" type="number" name="precio_max" value="1000"/>
+                    <label>Precio mínimo (€):</label>
+                    <input class="form-control" type="number" name="precio_min" value="0"/>
+                    <label>Temática:</label>
+                    <select class="form-control" name="tematica">
+                            <option value="ludico">Lúdico</option>
+                            <option value="cultural">Cultural</option>
+                            <option value="festivo">Festivo</option>
+                    </select>
+                    <input type="submit" value="Buscar Viaje!" style="margin-top: 30px" class="btn btn-primary"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
